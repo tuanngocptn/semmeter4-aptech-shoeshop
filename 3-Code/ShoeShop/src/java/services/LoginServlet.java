@@ -6,6 +6,7 @@
 
 package services;
 
+import entities.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.LoginModel;
 import others.Constants;
 import others.Methods;
 
@@ -20,15 +22,10 @@ import others.Methods;
  *
  * @author Panda
  */
-@WebServlet(name = "HelloServlet", urlPatterns = {"/HelloServlet"})
-public class HelloServlet extends HttpServlet {
-    
+@WebServlet(name = "login", urlPatterns = {"/login"})
+public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-//        out.print("hello servlet");
-        request.getRequestDispatcher("/WEB-INF/views/index.html").forward(request, response);
     }
     
     @Override
@@ -40,7 +37,17 @@ public class HelloServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        PrintWriter out = response.getWriter();
+        Methods.setHeaderAjax(request, response);
+        String user = request.getParameter(Constants.USER_PARAM);
+        String pass = request.getParameter(Constants.PASS_PARAM);
+        LoginModel loginModel = new LoginModel();
+        Account account = loginModel.checkLogin(user, pass);
+        if(account == null){
+            out.print(Constants.RESULT_EMPTY_OBJECT);
+        }else{
+            out.print(Methods.toJson(account));
+        }
     }
 
     @Override

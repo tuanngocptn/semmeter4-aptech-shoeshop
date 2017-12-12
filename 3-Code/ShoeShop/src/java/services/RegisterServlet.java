@@ -20,22 +20,18 @@ import others.Methods;
  *
  * @author Panda
  */
-@WebServlet(name = "HelloServlet", urlPatterns = {"/HelloServlet"})
-public class HelloServlet extends HttpServlet {
+@WebServlet(name = "register", urlPatterns = {"/register"})
+public class RegisterServlet extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-//        out.print("hello servlet");
-        request.getRequestDispatcher("/WEB-INF/views/index.html").forward(request, response);
     }
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Methods.setHeaderNomal(request, response);
-        request.getRequestDispatcher(Constants.LOGIN_URL).forward(request, response);
+        request.getRequestDispatcher(Constants.REGISTER_URL).forward(request, response);
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

@@ -17,20 +17,19 @@ import others.Constants;
  * @author Panda
  */
 public class DatabaseConnect {
-    public Connection getConnection() throws SQLException {
+    public static Connection getConnection() throws SQLException {
         Connection conn = null;
         try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            Class.forName(Constants.CONNECTION_STRING);
             String url = Constants.DB_URL;
             conn = DriverManager.getConnection(url, Constants.DB_USER, Constants.DB_PASS);
         } catch (ClassNotFoundException | SQLException ex) {
-            ex.printStackTrace();
         }
         return conn;
     }
     
     public void test() {
-        String sql = "SELECT * FROM tblAccount";
+        String sql = "SELECT * FROM tbl_account";
         ResultSet rs;
         try {
             rs = getConnection().createStatement().executeQuery(sql);
@@ -39,7 +38,6 @@ public class DatabaseConnect {
             }
             rs.close();
         } catch (SQLException ex) {
-            ex.printStackTrace();
         }
     }
     
