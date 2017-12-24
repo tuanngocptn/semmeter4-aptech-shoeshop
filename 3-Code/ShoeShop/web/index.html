@@ -36,8 +36,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <a href="index.html">N-AIR</a>
                 </div>
                 <div class="login-bars">
-                    <a class="btn btn-default log-bar" href="register.html" role="button">Sign up</a>
-                    <a class="btn btn-default log-bar" href="signup.html" role="button">Login</a>
+                    <a class="btn btn-default log-bar btn-register" style="display: none;" href="register.html" role="button">Sign up</a>
+                    <a class="btn btn-default log-bar btn-login" style="display: none;" href="login.html" role="button">Login</a>
+                    <a class="btn btn-default log-bar btn-logout" style="display: none;" href="#" role="button" onclick="localStorage.clear();location.reload();">Logout</a>
                     <div class="cart box_1">
                         <a href="checkout.html">
                             <h3>

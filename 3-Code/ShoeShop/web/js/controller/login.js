@@ -1,17 +1,19 @@
-$( document ).ready(function() {
+var roles = [{ role: '' }];
+
+$(document).ready(function () {
     $('#form-login').submit(false);
 
-    $('#btn-login').click(function(){
+    $('#btn-login').click(function () {
         var params = $('#form-login').serialize();
-        callAjax('POST','login',params,loginMethod);
+        callAjax('POST', 'login', params, loginMethod);
     })
 });
 
-function loginMethod(user){
-    if(JSON.stringify(user) !== JSON.stringify({})){
+function loginMethod(user) {
+    if (JSON.stringify(user) !== JSON.stringify({})) {
         localStorage.setItem("user", JSON.stringify(user));
         location.reload();
-    }else{
+    } else {
         localStorage.removeItem("user");
     }
 }

@@ -1,3 +1,5 @@
+var roles = [{ role: '' }];
+
 $(document).ready(function () {
     $('#form-register').submit(false);
 

@@ -1,3 +1,5 @@
+var roles = [{ role: 'ctm' }, { role: '' }];
+
 $(document).ready(function () { 
     callAjax("GET", 'product', 'params={}', loadBag);
     if(typeof user == 'undefined'){
@@ -25,7 +27,7 @@ $(document).ready(function () {
             params.lstOrderDetail = lstOrderDetail;
             params.shipDate = dateToMiliSecond(params.shipDate);
             params.date = (new Date()).getTime();
-            callAjax("POST", 'order',JSON.stringify(params), console.log);
+            callAjax("POST", 'order',JSON.stringify(params), isSuccessOrder);
         };
     });
 
@@ -66,6 +68,18 @@ $(document).ready(function () {
     
 });
 
+function isSuccessOrder(boo){
+    console.log(boo);
+    if(boo){
+        if(!alert('order success!')){
+            simpleCart.empty();
+            window.location.replace(constants.urlServer + 'index.html');
+        }
+    }else{
+        alert("order false!");
+    }
+}
+
 function loadInfo(boo){
     if(boo){
         $(".input-disable").prop('disabled', true);
@@ -95,7 +109,6 @@ function loadBag(data){
             }
         });
     });
-    
 }
 
 function getBagCard(item, index){

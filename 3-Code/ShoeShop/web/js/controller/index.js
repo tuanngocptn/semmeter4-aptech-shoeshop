@@ -1,3 +1,5 @@
+var roles = [{ role: 'adm' }, { role: 'ctm' }, { role: '' }];
+
 $(document).ready(function () {
     localStorage.removeItem('productType');
     if (typeof localStorage.productType === 'undefined') {

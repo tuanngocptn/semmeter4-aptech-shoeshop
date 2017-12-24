@@ -1,3 +1,5 @@
+var roles = [{ role: 'ctm' }, { role: '' }];
+
 $(document).ready(function () {
     var product = JSON.parse(localStorage.single);
     loadSingle(product);
