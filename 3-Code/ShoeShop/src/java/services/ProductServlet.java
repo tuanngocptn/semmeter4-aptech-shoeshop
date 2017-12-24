@@ -1,12 +1,13 @@
+package services;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
-package services;
-
-import control.LoginControl;
+import control.ProductControl;
+import entities.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -21,10 +22,16 @@ import others.Methods;
  *
  * @author Panda
  */
-@WebServlet(name = "login", urlPatterns = {"/login"})
-public class LoginServlet extends HttpServlet {
+@WebServlet(name = "product", urlPatterns = {"/product"})
+public class ProductServlet extends HttpServlet {
     
-    PrintWriter printWriter;
+    private PrintWriter printWriter;
+    private ProductControl productControl;
+
+    @Override
+    public void init() throws ServletException {
+        productControl = new ProductControl();
+    }
             
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -33,26 +40,21 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Methods.setHeaderNomal(request, response);
-        request.getRequestDispatcher(Constants.LOGIN_URL).forward(request, response);
-    }
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Methods.setHeaderAjax(request, response);
         printWriter = response.getWriter();
-        
-        LoginControl loginControl = new LoginControl();
-        
-        String user = request.getParameter(Constants.USER_PARAM);
-        String pass = request.getParameter(Constants.PASS_PARAM);
-        
-        printWriter.print(loginControl.checkLogin(user, pass));
+        String param = request.getParameter(Constants.PRAM_STRING);
+        Product product = Methods.fromJson(param, Product.class);
+        printWriter.write(productControl.getAllProduct(product));
+    }
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
     }
 
     @Override
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
-        
     }
 
     @Override

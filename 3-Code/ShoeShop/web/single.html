@@ -8,7 +8,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html lang="en">
 
 <head>
-    <title>N-Air a E-commerce category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
+    <title>N-Air a E-commerce category Flat Bootstrap Responsive Website Template | Single :: w3layouts</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="N-Air Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"
@@ -26,6 +26,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!--bootstrap-js-->
     <script src="js/bootstrap.min.js"></script>
     <!--script-->
+    <!-- FlexSlider -->
+    <script src="js/imagezoom.js"></script>
+    <script defer src="js/jquery.flexslider.js"></script>
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+
+    <script>
+        // Can also be used with $(document).ready()
+        $(window).load(function () {
+            $('.flexslider').flexslider({
+                animation: "slide",
+                controlNav: "thumbnails"
+            });
+        });
+    </script>
+    <!-- //FlexSlider-->
 </head>
 
 <body>
@@ -66,7 +81,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <span class="icon-bar"></span>
                             </button>
                         </div>
-                        <div class="clearfix"></div>
                         <!--/.navbar-header-->
 
                         <div class="collapse navbar-collapse collapse-pdng" id="bs-example-navbar-collapse-1">
@@ -212,42 +226,66 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <!--header-bottom-->
         </div>
     </div>
-    <div class="header-end">
+    <div class="head-bread">
         <div class="container">
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                </ol>
-
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner" role="listbox">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li>
+                    <a href="#">Men</a>
+                </li>
+                <li class="active">Shop</li>
+            </ol>
+        </div>
+    </div>
+    <div class="showcase-grid">
+        <div class="container">
+            <div class="col-md-8 showcase">
+                <div class="flexslider">
+                    <ul class="slides"></ul>
+                    <div class="clearfix"></div>
                 </div>
-
-                <!-- Controls -->
-                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left car-icn" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right car-icn" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
+            </div>
+            <div class="col-md-4 showcase">
+                <div class="showcase-rt-top">
+                    <div class="pull-left shoe-name">
+                        <h3>Nike Air Max 2015</h3>
+                        <p>Men's running shoes</p>
+                        <h4>&#36;190</h4>
+                    </div>
+                    <div class="pull-left rating-stars">
+                        <ul></ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <hr class="featurette-divider">
+                <div class="shocase-rt-bot">
+                    <ul>
+                        <li class="ad-2-crt simpleCart_shelfItem">
+                            <a class="btn item_add" href="#" role="button">
+                                <span>Add To Cart</span>
+                                <span class="hidden item_price">&#36;190</span>
+                                <span class="item_name hidden">code</span>
+                            </a>
+                            <a class="btn" href="#" role="button">Buy Now</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="showcase-last">
+                    <h3>product details</h3>
+                    <ul>
+                        <li>Internal bootie wraps your foot for a sock-like fit</li>
+                    </ul>
+                </div>
             </div>
             <div class="clearfix"></div>
         </div>
     </div>
-    <div class="shop-grid">
-        <div class="container content-product">
-
-        </div>
-    </div>
-    <div class="sub-news">
-        <div class="container">
-            <form>
-                <h3>NewsLetter</h3>
-                <input type="text" class="sub-email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}">
-                <a class="btn btn-default subs-btn" href="#" role="button">SUBSCRIBE</a>
-            </form>
+    <div class="you-might-like">
+        <div class="container">            
+            <h3 class="you-might">Products You May Like</h3>
+            <div class="content-product"></div>
         </div>
     </div>
     <div class="footer-grid">
@@ -331,7 +369,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
     </div>
     <script src="js/other/constants-and-methods.js"></script>
-    <script src="js/controller/index.js"></script>
+    <script src="js/controller/single.js"></script>
 </body>
 
 </html>

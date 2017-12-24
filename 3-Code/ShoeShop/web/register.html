@@ -15,10 +15,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     />
     <script type="application/x-javascript"> addEventListener("load", function() {setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <meta charset utf="8">
-    <!--fonts-->
-    <link href='//fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
-
-    <!--fonts-->
     <!--bootstrap-->
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <!--coustom css-->
@@ -27,6 +23,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script src="js/simpleCart.min.js"></script>
     <!--default-js-->
     <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
     <!--bootstrap-js-->
     <script src="js/bootstrap.min.js"></script>
     <!--script-->
@@ -252,44 +249,51 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <p>If you have previously registered with us,
                     <a href="#">click here</a>
                 </p>
-                <form>
+                <p class="error-message hidden alert-danger">Username or Phone number is Existed</p>
+                <form action="register" method="POST" id="form-register">
                     <ul>
-                        <li class="text-info">First Name: </li>
+                        <li class="text-info">Full Name: </li>
                         <li>
-                            <input type="text" value="">
-                        </li>
-                    </ul>
-                    <ul>
-                        <li class="text-info">Last Name: </li>
-                        <li>
-                            <input type="text" value="">
+                            <input type="text" value="" name="name">
                         </li>
                     </ul>
                     <ul>
                         <li class="text-info">Email: </li>
                         <li>
-                            <input type="text" value="">
+                            <input type="text" value="" name="email">
+                        </li>
+                    </ul>
+                    <ul>
+                        <li class="text-info">Username: </li>
+                        <li>
+                            <input type="text" value="" name="user">
                         </li>
                     </ul>
                     <ul>
                         <li class="text-info">Password: </li>
                         <li>
-                            <input type="password" value="">
+                            <input type="password" value="" name="pass" id="pass">
                         </li>
                     </ul>
                     <ul>
                         <li class="text-info">Re-enter Password:</li>
                         <li>
-                            <input type="password" value="">
+                            <input type="password" value="" name="repass">
                         </li>
                     </ul>
                     <ul>
                         <li class="text-info">Mobile Number:</li>
                         <li>
-                            <input type="text" value="">
+                            <input type="text" value="" name="phone">
                         </li>
                     </ul>
-                    <input type="submit" value="Register Now">
+                    <ul>
+                        <li class="text-info">Address: </li>
+                        <li>
+                            <input type="text" value="" name="address">
+                        </li>
+                    </ul>
+                    <input type="submit" value="Register Now" id="btn-register">
                     <p class="click">By clicking this button, you are agree to my
                         <a href="#">Policy Terms and Conditions.</a>
                     </p>
@@ -377,6 +381,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
         </div>
     </div>
+    <script src="js/other/constants-and-methods.js"></script>
+    <script src="js/controller/register.js"></script>
 </body>
 
 </html>

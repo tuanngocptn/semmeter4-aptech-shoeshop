@@ -6,6 +6,8 @@
 
 package services;
 
+import control.RegisterControl;
+import entities.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -23,8 +25,16 @@ import others.Methods;
 @WebServlet(name = "register", urlPatterns = {"/register"})
 public class RegisterServlet extends HttpServlet {
     
+    private PrintWriter printWriter;
+    private RegisterControl registerControl;
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    }
+
+    @Override
+    public void init() throws ServletException {
+        registerControl = new RegisterControl();
     }
     
     @Override
@@ -36,7 +46,11 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        printWriter = response.getWriter();
+        String param = Methods.getAjaxRequest(request);
+        Account account = Methods.fromJson(param, Account.class);
+        boolean boo = registerControl.register(account);
+        printWriter.print(boo);
     }
 
     @Override

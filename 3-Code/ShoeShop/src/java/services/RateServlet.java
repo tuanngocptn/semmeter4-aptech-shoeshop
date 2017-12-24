@@ -6,7 +6,8 @@
 
 package services;
 
-import control.LoginControl;
+import control.RateControl;
+import entities.Rate;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -21,11 +22,16 @@ import others.Methods;
  *
  * @author Panda
  */
-@WebServlet(name = "login", urlPatterns = {"/login"})
-public class LoginServlet extends HttpServlet {
+@WebServlet(name = "rate", urlPatterns = {"/rate"})
+public class RateServlet extends HttpServlet {
+    private PrintWriter printWriter;
+    private RateControl rateControl;
+
+    @Override
+    public void init() throws ServletException {
+        rateControl = new RateControl();
+    }
     
-    PrintWriter printWriter;
-            
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     }
@@ -33,26 +39,26 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Methods.setHeaderNomal(request, response);
-        request.getRequestDispatcher(Constants.LOGIN_URL).forward(request, response);
-    }
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Methods.setHeaderAjax(request, response);
         printWriter = response.getWriter();
-        
-        LoginControl loginControl = new LoginControl();
-        
-        String user = request.getParameter(Constants.USER_PARAM);
-        String pass = request.getParameter(Constants.PASS_PARAM);
-        
-        printWriter.print(loginControl.checkLogin(user, pass));
+        String param = request.getParameter(Constants.PRAM_STRING);
+        Rate rate = Methods.fromJson(param, Rate.class);
+        rate.setRate(rateControl.getRate(rate));
+        printWriter.write(Methods.toJson(rate));
+    }
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        Methods.setHeaderAjax(request, response);
+        printWriter = response.getWriter();
+        String param = Methods.getAjaxRequest(request);
+        Rate rate = Methods.fromJson(param, Rate.class);
+        printWriter.write(Boolean.toString(rateControl.doRateSuccess(rate)));
     }
 
     @Override
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
-        
     }
 
     @Override

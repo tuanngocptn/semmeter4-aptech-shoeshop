@@ -19,9 +19,8 @@ import others.Methods;
 public class LoginModel {
     public Account checkLogin(String user, String pass){
         String sql = Methods.strCheckLogin(user, pass);
-        ResultSet rs;
         try {
-            rs = DatabaseConnect.getConnection().createStatement().executeQuery(sql);
+            ResultSet rs = DatabaseConnect.getResultSet(sql);
             if(rs == null){
                 return null;
             }
@@ -37,9 +36,9 @@ public class LoginModel {
                 account.setPhone(rs.getString(Constants.ACCOUNT_COLUMN_PHONE));
                 account.setEmail(rs.getString(Constants.ACCOUNT_COLUMN_EMAIL));
                 account.setStatus(rs.getString(Constants.ACCOUNT_COLUMN_STATUS));
+                rs.close();
                 return account;
             }
-            rs.close();
         } catch (SQLException ex) {
         }
         return null;

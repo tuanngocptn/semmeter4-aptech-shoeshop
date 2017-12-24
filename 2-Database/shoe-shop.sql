@@ -31,12 +31,13 @@ CREATE TABLE tbl_account(
 	_user VARCHAR(50) NOT NULL UNIQUE,
 	_pass VARCHAR(50) NOT NULL,
 	_name VARCHAR(50) NOT NULL DEFAULT 'edit me',
-	_address VARCHAR(255) UNIQUE,
+	_address VARCHAR(255),
 	_phone VARCHAR(15) NOT NULL UNIQUE,
 	_email VARCHAR(100) NOT NULL DEFAULT 'edit-me@email.com',
 	_status VARCHAR(20) NOT NULL DEFAULT 'active'
 )
 GO
+
 
 INSERT INTO tbl_account(_code, _role_code, _user, _pass, _address, _phone, _email, _status) 
 	VALUES	('adm01','adm','admin','admin','123 adm01 No 1 in the Mars','0989786765', 'adm01@email.com', 'active'),
@@ -111,11 +112,14 @@ GO
 CREATE TABLE tbl_order(
 	_ord INT IDENTITY,
 	_code VARCHAR(20) PRIMARY KEY,
-	_account_code VARCHAR(20) FOREIGN KEY REFERENCES tbl_account(_code),
+	_account_code VARCHAR(20),
 	_date BIGINT NOT NULL DEFAULT 1513036800000,
-	_address VARCHAR(255) NOT NULL DEFAULT 'address',
+	_name VARCHAR(50) NOT NULL DEFAULT 'edit me',
+	_email VARCHAR(100) NOT NULL DEFAULT 'edit-me@email.com',
 	_phone VARCHAR (20) NOT NULL DEFAULT '84000000000',
-	_status VARCHAR(20) NOT NULL DEFAULT 'wait'
+	_ship_address VARCHAR(255) NOT NULL DEFAULT '123 adm01 No 1 in the Mars',
+	_ship_date BIGINT NOT NULL DEFAULT 1513036800000,
+	_status VARCHAR(20) NOT NULL DEFAULT 'wait',
 )
 
 INSERT INTO tbl_order (_code, _account_code)
