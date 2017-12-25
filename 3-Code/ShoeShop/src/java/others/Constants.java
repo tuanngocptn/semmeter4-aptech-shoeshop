@@ -34,6 +34,7 @@ public class Constants {
     public static final String STATUS_ACTIVE = "active";
     public static final String STATUS_DELETE= "delete";
     public static final String FORMAT_ORDER_CODE = "ord";
+    public static final String FORMAT_CATEGORY_CODE = "cate";
     
     public static final String ACCOUNT_TABLE = "tbl_account";
     public static final String ACCOUNT_COLUMN_ORD = "_ord";
@@ -89,4 +90,18 @@ public class Constants {
     public static final String ORDER_DETAIL_COLUMN_ORDER_CODE = "_order_code";
     public static final String ORDER_DETAIL_COLUMN_PRODUCT_CODE = "_product_code";
     public static final String ORDER_DETAIL_COLUMN_QUANTITY = "_quantity";
+    
+    public static final String CATEGORY_TABLE = "tbl_category";
+    public static final String CATEGORY_COLUMN_ORD = "_ord";
+    public static final String CATEGORY_COLUMN_CODE = "_code";
+    public static final String CATEGORY_COLUMN_NAME = "_name";
+    public static final String CATEGORY_COLUMN_STATUS = "_status";
+    public static final String CATEGORY_COLUMN_LOGO = "_logo";
+    
+    public static final String BRAND_TABLE = "tbl_brand";
+    public static final String BRAND_COLUMN_ORD = "_ord";
+    public static final String BRAND_COLUMN_CODE = "_code";
+    public static final String BRAND_COLUMN_NAME = "_name";
+    public static final String BRAND_COLUMN_STATUS = "_status";
+    public static final String BRAND_COLUMN_LOGO = "_logo";
 }

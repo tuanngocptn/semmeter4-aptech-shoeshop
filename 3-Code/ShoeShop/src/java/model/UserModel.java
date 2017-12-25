@@ -16,7 +16,7 @@ import others.Methods;
  *
  * @author Panda
  */
-public class LoginModel {
+public class UserModel {
     public Account checkLogin(String user, String pass){
         String sql = Methods.strCheckLogin(user, pass);
         try {

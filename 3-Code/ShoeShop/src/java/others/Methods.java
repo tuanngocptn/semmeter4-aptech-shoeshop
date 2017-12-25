@@ -7,6 +7,8 @@ package others;
 
 import com.google.gson.Gson;
 import entities.Account;
+import entities.Brand;
+import entities.Category;
 import entities.Order;
 import entities.OrderDetail;
 import entities.Product;
@@ -73,6 +75,40 @@ public class Methods {
                 + account.getUser() + "','" + account.getPass() + "','"
                 + account.getAddress() + "','" + account.getPhone() + "', '"
                 + account.getEmail() + "', '" + account.getStatus() + "')";
+        return query;
+    }
+
+    public static String strSelectAccount(Account account) {
+        String query = "SELECT "
+                + Constants.ACCOUNT_COLUMN_CODE + ", " + Constants.ACCOUNT_COLUMN_ROLE_CODE + ", "
+                + Constants.ACCOUNT_COLUMN_USER + ", " + Constants.ACCOUNT_COLUMN_PASS + ", "
+                + Constants.ACCOUNT_COLUMN_ADDRESS + ", " + Constants.ACCOUNT_COLUMN_PHONE + ", "
+                + Constants.ACCOUNT_COLUMN_EMAIL + ", " + Constants.ACCOUNT_COLUMN_STATUS
+                + " FROM tbl_account WHERE 0 = 0 ";
+        if (account.getCode() != null) {
+            query += " AND " + Constants.ACCOUNT_COLUMN_CODE + " LIKE '%" + account.getCode() + "%' ";
+        }
+        if (account.getRoleCode() != null) {
+            query += " AND " + Constants.ACCOUNT_COLUMN_ROLE_CODE + " LIKE '%" + account.getRoleCode() + "%' ";
+        }
+        if (account.getUser() != null) {
+            query += "AND " + Constants.ACCOUNT_COLUMN_USER + " LIKE '%" + account.getUser() + "%' ";
+        }
+        if (account.getPass() != null) {
+            query += "AND " + Constants.ACCOUNT_COLUMN_PASS + " LIKE '%" + account.getPass() + "%' ";
+        }
+        if (account.getAddress() != null) {
+            query += "AND " + Constants.ACCOUNT_COLUMN_ADDRESS + " LIKE '%" + account.getAddress() + "%' ";
+        }
+        if (account.getPhone() != null) {
+            query += "AND " + Constants.ACCOUNT_COLUMN_PHONE + " LIKE '%" + account.getPhone() + "%' ";
+        }
+        if (account.getEmail() != null) {
+            query += "AND " + Constants.ACCOUNT_COLUMN_EMAIL + " LIKE '%" + account.getEmail() + "%' ";
+        }
+        if (account.getStatus() != null) {
+            query += "AND " + Constants.ACCOUNT_COLUMN_STATUS + "  LIKE '%" + account.getStatus() + "%';";
+        }
         return query;
     }
 
@@ -159,10 +195,94 @@ public class Methods {
                 + order.getStatus() + "');";
         return query;
     }
-    
+
     public static String strOrderMaxOrd() {
         String query = "SELECT MAX(" + Constants.ORDER_COLUMN_ORD + ") AS "
                 + Constants.ORDER_COLUMN_ORD + "  FROM " + Constants.ORDER_TABLE + ";";
+        return query;
+    }
+
+    public static String strSelectCategory(Category category) {
+        String query = "SELECT "
+                + Constants.CATEGORY_COLUMN_ORD + ", " + Constants.CATEGORY_COLUMN_CODE + ", "
+                + Constants.CATEGORY_COLUMN_NAME + ", " + Constants.CATEGORY_COLUMN_STATUS + ", "
+                + Constants.CATEGORY_COLUMN_LOGO + " FROM " + Constants.CATEGORY_TABLE + " WHERE 0 <> 0 ";
+        if (category.getStatus() != null) {
+            query += " OR " + Constants.CATEGORY_COLUMN_STATUS + " LIKE '%" + category.getStatus() + "%' ";
+        }
+        if (category.getCode() != null) {
+            query += " OR " + Constants.CATEGORY_COLUMN_CODE + " LIKE '%" + category.getCode() + "%' ";
+        }
+        if (category.getName() != null) {
+            query += " OR " + Constants.CATEGORY_COLUMN_NAME + " LIKE '%" + category.getName() + "%';";
+        }
+        return query;
+    }
+    
+    public static String strCateMaxOrd(){
+        String query = "SELECT MAX(" + Constants.CATEGORY_COLUMN_ORD + ") AS "
+                + Constants.CATEGORY_COLUMN_ORD + "  FROM " + Constants.CATEGORY_TABLE+ ";";
+        return query;
+    }
+
+    public static String strInsertCategory(Category category) {
+        String query = "INSERT INTO " + Constants.CATEGORY_TABLE + " ("
+                + Constants.CATEGORY_COLUMN_CODE + ", " + Constants.CATEGORY_COLUMN_NAME + ", "
+                + Constants.CATEGORY_COLUMN_LOGO + ") "
+                + "VALUES ('" + category.getCode() + "','" + category.getName() + "','"
+                + category.getLogo() + "')";
+        return query;
+    }
+
+    public static String strUpdateCategory(Category category) {
+        String query = "UPDATE " + Constants.CATEGORY_TABLE + " SET "
+                + Constants.CATEGORY_COLUMN_NAME + " = '" + category.getName() + "', "
+                + Constants.CATEGORY_COLUMN_STATUS + " ='" + category.getStatus() + "', "
+                + Constants.CATEGORY_COLUMN_LOGO + " = '" + category.getLogo()
+                + "' WHERE "
+                + Constants.CATEGORY_COLUMN_CODE + " = '" + category.getCode() + "';";
+        return query;
+    }
+
+    public static String strBrandMaxOrd(){
+        String query = "SELECT MAX(" + Constants.BRAND_COLUMN_ORD + ") AS "
+                + Constants.BRAND_COLUMN_ORD + "  FROM " + Constants.BRAND_TABLE+ ";";
+        return query;
+    }    
+    
+    public static String strSelectBrand(Brand brand) {
+        String query = "SELECT "
+                + Constants.BRAND_COLUMN_ORD + ", " + Constants.BRAND_COLUMN_CODE + ", "
+                + Constants.BRAND_COLUMN_NAME + ", " + Constants.BRAND_COLUMN_STATUS + ", "
+                + Constants.BRAND_COLUMN_LOGO + " FROM " + Constants.BRAND_TABLE + " WHERE 0 = 0 ";
+        if (brand.getStatus() != null) {
+            query += " AND " + Constants.BRAND_COLUMN_STATUS + " LIKE '%" + brand.getStatus() + "%' ";
+        }
+        if (brand.getCode() != null) {
+            query += " AND " + Constants.BRAND_COLUMN_CODE + " LIKE '%" + brand.getCode() + "%' ";
+        }
+        if (brand.getName() != null) {
+            query += " AND " + Constants.BRAND_COLUMN_NAME + " LIKE '%" + brand.getName() + "%';";
+        }
+        return query;
+    }
+
+    public static String strInsertBrand(Brand brand) {
+        String query = "INSERT INTO " + Constants.BRAND_TABLE + " ("
+                + Constants.BRAND_COLUMN_CODE + ", " + Constants.BRAND_COLUMN_NAME + ", "
+                + Constants.BRAND_COLUMN_LOGO + ") "
+                + "VALUES ('" + brand.getCode() + "','" + brand.getName() + "','"
+                + brand.getLogo() + "')";
+        return query;
+    }
+
+    public static String strUpdateBrand(Brand brand) {
+        String query = "UPDATE " + Constants.BRAND_TABLE + " SET "
+                + Constants.BRAND_COLUMN_NAME + " = '" + brand.getName() + "', "
+                + Constants.BRAND_COLUMN_STATUS + " ='" + brand.getStatus() + "', "
+                + Constants.BRAND_COLUMN_LOGO + " = '" + brand.getLogo()
+                + "' WHERE "
+                + Constants.BRAND_COLUMN_CODE + " = '" + brand.getCode() + "';";
         return query;
     }
 }

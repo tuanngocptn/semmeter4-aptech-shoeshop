@@ -7,7 +7,7 @@
 package control;
 
 import entities.Account;
-import model.LoginModel;
+import model.UserModel;
 import others.Constants;
 import others.Methods;
 
@@ -17,7 +17,7 @@ import others.Methods;
  */
 public class LoginControl {
     public String checkLogin(String user, String pass){
-        LoginModel loginModel = new LoginModel();
+        UserModel loginModel = new UserModel();
         Account account = loginModel.checkLogin(user, pass);
         if(account == null){
             return Constants.RESULT_EMPTY_OBJECT;
