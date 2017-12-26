@@ -23,7 +23,25 @@ public class Product {
     private boolean isHot;
     private int quantity;
     private String status;
+    private int top;
+    private String typeSearch;
     List<ImageProduct> lstImages;
+
+    public String getTypeSearch() {
+        return typeSearch;
+    }
+
+    public void setTypeSearch(String typeSearch) {
+        this.typeSearch = typeSearch;
+    }
+
+    public int getTop() {
+        return top;
+    }
+
+    public void setTop(int top) {
+        this.top = top;
+    }
 
     public List<ImageProduct> getLstImages() {
         return lstImages;

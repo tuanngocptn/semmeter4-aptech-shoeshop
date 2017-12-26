@@ -12,7 +12,11 @@ $(document).ready(function () {
 function loginMethod(user) {
     if (JSON.stringify(user) !== JSON.stringify({})) {
         localStorage.setItem("user", JSON.stringify(user));
-        location.reload();
+        if (user.roleCode == 'adm') {
+            window.location.replace(constants.urlServer + 'admins/home.html');
+        }else{
+            location.reload();
+        }
     } else {
         localStorage.removeItem("user");
     }

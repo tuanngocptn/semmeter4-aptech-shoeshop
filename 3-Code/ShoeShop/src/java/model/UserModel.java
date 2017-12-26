@@ -9,6 +9,7 @@ package model;
 import entities.Account;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import others.Constants;
 import others.Methods;
 
@@ -41,6 +42,10 @@ public class UserModel {
             }
         } catch (SQLException ex) {
         }
+        return null;
+    }
+    
+    public List<Account> get(){
         return null;
     }
 }

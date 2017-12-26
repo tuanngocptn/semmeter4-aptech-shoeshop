@@ -35,6 +35,8 @@ public class Constants {
     public static final String STATUS_DELETE= "delete";
     public static final String FORMAT_ORDER_CODE = "ord";
     public static final String FORMAT_CATEGORY_CODE = "cate";
+    public static final String FORMAT_BRAND_CODE = "bra";
+    public static final String FORMAT_PRODUCT_IMAGE = "ptr";
     
     public static final String ACCOUNT_TABLE = "tbl_account";
     public static final String ACCOUNT_COLUMN_ORD = "_ord";

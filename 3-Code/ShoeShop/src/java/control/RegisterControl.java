@@ -7,7 +7,7 @@
 package control;
 
 import entities.Account;
-import model.RegisterModel;
+import model.AccountModel;
 
 /**
  *
@@ -15,13 +15,13 @@ import model.RegisterModel;
  */
 public class RegisterControl {
 
-    RegisterModel registerModel;
+    AccountModel registerModel;
     
     public RegisterControl() {
-        registerModel = new RegisterModel();
+        registerModel = new AccountModel();
     }
     
     public boolean register(Account account){
-        return registerModel.register(account);
+        return registerModel.add(account);
     }
 }

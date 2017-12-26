@@ -11,7 +11,7 @@ package entities;
  */
 public class Brand {
 
-    private String ord;
+    private int ord;
     private String code;
     private String name;
     private String status;
@@ -20,11 +20,11 @@ public class Brand {
     public Brand() {
     }
 
-    public String getOrd() {
+    public int getOrd() {
         return ord;
     }
 
-    public void setOrd(String ord) {
+    public void setOrd(int ord) {
         this.ord = ord;
     }
 
