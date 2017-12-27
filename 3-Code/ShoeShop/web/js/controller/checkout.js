@@ -1,7 +1,7 @@
 var roles = [{ role: 'ctm' }, { role: '' }];
 
 $(document).ready(function () { 
-    callAjax("GET", 'product', 'params={}', loadBag);
+    callAjax("GET", 'product', 'params={ "name":""}', loadBag);
     if(typeof user == 'undefined'){
         $("#cb-get-info").prop('disabled', true);
     }
@@ -131,7 +131,7 @@ function getBagCard(item, index){
                 '</div>'+
                 '<div class="cart-sec simpleCart_shelfItem">'+
                     '<div class="cart-item cyc">'+
-                        '<img src="'+ item.lstImages[0].image +'" class="img-responsive" alt="" />'+
+                        '<img src="'+ item.lstImages[1].image +'" class="img-responsive" alt="" />'+
                     '</div>'+
                     '<div class="cart-item-info">'+
                         '<ul class="qty">'+

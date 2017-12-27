@@ -21,7 +21,7 @@ function loadCarousel(data){
             i++;
         }
     });
-    callAjax("GET", 'product', 'params={}', loadData);
+    callAjax("GET", 'product', 'params={"top":9, "name":""}', loadData);
 }
 
 function loadData(data){
@@ -74,7 +74,7 @@ return '<div class="col-md-4 grid-stn simpleCart_shelfItem">'+
             '<div class="ih-item square effect3 bottom_to_top">'+
                 '<div class="bottom-2-top">'+
                     '<div class="img">'+
-                        '<img src="'+ value.lstImages[0].image +'" alt="/" class="img-responsive gri-wid">'+
+                        '<img src="'+ value.lstImages[1].image +'" alt="/" class="img-responsive gri-wid">'+
                     '</div>'+
                     '<div class="info">'+
                         '<div class="pull-left style-hdn">'+

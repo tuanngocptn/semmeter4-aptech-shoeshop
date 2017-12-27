@@ -185,7 +185,7 @@ public class Methods {
     public static String strSelectImageProduct(String productCode) {
         String query = "SELECT TOP 4 * FROM " + Constants.IMAGE_TABLE
                 + " WHERE " + Constants.IMAGE_STATUS + " = '" + Constants.STATUS_ACTIVE
-                + "' OR " + Constants.IMAGE_PRODUCT_CODE + " = '" + productCode + "'";
+                + "' AND " + Constants.IMAGE_PRODUCT_CODE + " = '" + productCode + "'";
         return query;
     }
 

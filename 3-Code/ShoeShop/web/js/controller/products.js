@@ -70,7 +70,7 @@ function getProductCard(value){
                 '<div class="ih-item square effect3 bottom_to_top">'+
                     '<div class="bottom-2-top">'+
                         '<div class="img">'+
-                            '<img src="'+ value.lstImages[0].image +'" alt="/" class="img-responsive gri-wid">'+
+                            '<img src="'+ value.lstImages[1].image +'" alt="/" class="img-responsive gri-wid">'+
                         '</div>'+
                         '<div class="info">'+
                             '<div class="pull-left styl-hdn">'+

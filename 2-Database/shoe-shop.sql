@@ -54,8 +54,11 @@ CREATE TABLE tbl_brand(
 GO
 
 INSERT INTO tbl_brand (_code, _name)
-	VALUES	('brn01','branch01'),
-			('brn02','branch02')
+	VALUES	('nike','Nike'),
+			('adidas','Adidas'),
+			('converse','Converse'),
+			('vans','Vans'),
+			('puma','Puma')
 GO
 
 CREATE TABLE tbl_category(
@@ -68,8 +71,11 @@ CREATE TABLE tbl_category(
 GO
 
 INSERT INTO tbl_category (_code, _name)
-	VALUES	('cate01','category01'),
-			('cate02','category02')
+	VALUES	('joggers','Joggers'),
+			('cricket','Cricket'),
+			('tennis','Tennis'),
+			('casual','Casual'),
+			('sports','Sports')
 GO
 
 CREATE TABLE tbl_product(
@@ -78,7 +84,7 @@ CREATE TABLE tbl_product(
 	_name VARCHAR(50) NOT NULL,
 	_brand_code VARCHAR(20) FOREIGN KEY REFERENCES tbl_brand(_code),
 	_category_code VARCHAR(20) FOREIGN KEY REFERENCES tbl_category(_code),
-	_description VARCHAR(255) NOT NULL DEFAULT 'description',
+	_description VARCHAR(500) NOT NULL DEFAULT 'description',
 	_price FLOAT NOT NULL DEFAULT 0,
 	_is_hot BIT NOT NULL DEFAULT 0,
 	_quantity INT NOT NULL DEFAULT 0,
@@ -86,9 +92,19 @@ CREATE TABLE tbl_product(
 )
 GO
 
-INSERT INTO tbl_product (_code, _name, _brand_code, _category_code)
-	VALUES	('prd01','product 01', 'brn01', 'cate01'),
-			('prd02','product 02', 'brn02', 'cate02')
+INSERT INTO tbl_product (_code, _name, _brand_code, _category_code,_description,_price,_is_hot,_quantity)
+	VALUES	('prd01','Nike SF-AF1', 'nike', 'casual', 'Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua. Ut Enim Ad Minim Veniam, Quis Nostrud Exercitation Ullamco Laboris Nisi Ut Aliquip Ex Ea Commodo Consequat. Duis Aute Irure Dolor In Reprehenderit In Voluptate Velit Esse Cillum Dolore Eu', 103, 1, 12),
+			('prd02','Nike Air Huarache', 'nike', 'joggers', 'Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua. Ut Enim Ad Minim Veniam, Quis Nostrud Exercitation Ullamco Laboris Nisi Ut Aliquip Ex Ea Commodo Consequat. Duis Aute Irure Dolor In Reprehenderit In Voluptate Velit Esse Cillum Dolore Eu', 123, 0, 20),
+			('prd03','Nike Air Max', 'nike', 'joggers', 'Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua. Ut Enim Ad Minim Veniam, Quis Nostrud Exercitation Ullamco Laboris Nisi Ut Aliquip Ex Ea Commodo Consequat. Duis Aute Irure Dolor In Reprehenderit In Voluptate Velit Esse Cillum Dolore Eu', 121, 0, 30),
+			('prd04','The Nike Air Jordan', 'nike', 'cricket', 'Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua. Ut Enim Ad Minim Veniam, Quis Nostrud Exercitation Ullamco Laboris Nisi Ut Aliquip Ex Ea Commodo Consequat. Duis Aute Irure Dolor In Reprehenderit In Voluptate Velit Esse Cillum Dolore Eu', 289, 0, 32),
+			('prd05','Adidas Ultra Boots', 'adidas', 'cricket', 'Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua. Ut Enim Ad Minim Veniam, Quis Nostrud Exercitation Ullamco Laboris Nisi Ut Aliquip Ex Ea Commodo Consequat. Duis Aute Irure Dolor In Reprehenderit In Voluptate Velit Esse Cillum Dolore Eu', 150, 1, 41),
+			('prd06','Adidas EQT 2017', 'adidas', 'sports', 'Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua. Ut Enim Ad Minim Veniam, Quis Nostrud Exercitation Ullamco Laboris Nisi Ut Aliquip Ex Ea Commodo Consequat. Duis Aute Irure Dolor In Reprehenderit In Voluptate Velit Esse Cillum Dolore Eu', 110, 0, 12),
+			('prd07','Adidas MND', 'adidas', 'tennis', 'Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua. Ut Enim Ad Minim Veniam, Quis Nostrud Exercitation Ullamco Laboris Nisi Ut Aliquip Ex Ea Commodo Consequat. Duis Aute Irure Dolor In Reprehenderit In Voluptate Velit Esse Cillum Dolore Eu', 100, 0, 15),
+			('prd08','Adidas Yeezy Boost', 'adidas', 'sports', 'Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua. Ut Enim Ad Minim Veniam, Quis Nostrud Exercitation Ullamco Laboris Nisi Ut Aliquip Ex Ea Commodo Consequat. Duis Aute Irure Dolor In Reprehenderit In Voluptate Velit Esse Cillum Dolore Eu', 250, 1, 22),
+			('prd09','Vans Late Night Pack', 'vans', 'sports', 'Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua. Ut Enim Ad Minim Veniam, Quis Nostrud Exercitation Ullamco Laboris Nisi Ut Aliquip Ex Ea Commodo Consequat. Duis Aute Irure Dolor In Reprehenderit In Voluptate Velit Esse Cillum Dolore Eu', 60, 0, 11),
+			('prd10','Vans Digi Hula', 'vans', 'cricket', 'Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua. Ut Enim Ad Minim Veniam, Quis Nostrud Exercitation Ullamco Laboris Nisi Ut Aliquip Ex Ea Commodo Consequat. Duis Aute Irure Dolor In Reprehenderit In Voluptate Velit Esse Cillum Dolore Eu', 120, 0, 14),
+			('prd11','Vans x Baron Von Fancy', 'vans', 'tennis', 'Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua. Ut Enim Ad Minim Veniam, Quis Nostrud Exercitation Ullamco Laboris Nisi Ut Aliquip Ex Ea Commodo Consequat. Duis Aute Irure Dolor In Reprehenderit In Voluptate Velit Esse Cillum Dolore Eu', 123, 0, 31),
+			('prd12','Vans Footwear', 'vans', 'tennis', 'Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua. Ut Enim Ad Minim Veniam, Quis Nostrud Exercitation Ullamco Laboris Nisi Ut Aliquip Ex Ea Commodo Consequat. Duis Aute Irure Dolor In Reprehenderit In Voluptate Velit Esse Cillum Dolore Eu', 135, 0, 10)
 GO
 
 CREATE TABLE tbl_product_image(
@@ -100,13 +116,66 @@ CREATE TABLE tbl_product_image(
 )
 GO
 
-INSERT INTO tbl_product_image (_code, _product_code)
-	VALUES	('ptr01','prd01'),
-			('ptr02','prd01'),
-			('ptr03','prd01'),
-			('ptr04','prd02'),
-			('ptr05','prd02'),
-			('ptr06','prd02')
+INSERT INTO tbl_product_image (_code, _product_code,_image)
+	VALUES	('ptr01','prd01','images/shoe1.jpg'),
+			('ptr02','prd01','images/grid3.jpg'),
+			('ptr03','prd01','images/grid4.jpg'),
+			('ptr04','prd01','images/show.jpg'),
+
+			('ptr05','prd02','images/shoe1.jpg'),
+			('ptr06','prd02','images/grid4.jpg'),
+			('ptr07','prd02','images/grid3.jpg'),
+			('ptr08','prd02','images/show1.jpg'),
+
+			('ptr09','prd03','images/shoe3.jpg'),
+			('ptr10','prd03','images/grid5.jpg'),
+			('ptr11','prd03','images/grid6.jpg'),
+			('ptr12','prd03','images/show2.jpg'),
+
+			('ptr13','prd04','images/shoe1.jpg'),
+			('ptr14','prd04','images/grid6.jpg'),
+			('ptr15','prd04','images/grid5.jpg'),
+			('ptr16','prd04','images/show3.jpg'),
+
+			('ptr17','prd05','images/shoe2.jpg'),
+			('ptr18','prd05','images/grid7.jpg'),
+			('ptr19','prd05','images/grid8.jpg'),
+			('ptr20','prd05','images/show.jpg'),
+
+			('ptr21','prd06','images/shoe1.jpg'),
+			('ptr22','prd06','images/grid8.jpg'),
+			('ptr23','prd06','images/grid7.jpg'),
+			('ptr24','prd06','images/show1.jpg'),
+
+			('ptr25','prd07','images/shoe3.jpg'),
+			('ptr26','prd07','images/grid3.jpg'),
+			('ptr27','prd07','images/grid9.jpg'),
+			('ptr28','prd07','images/show2.jpg'),
+
+			('ptr29','prd08','images/shoe3.jpg'),
+			('ptr30','prd08','images/grid4.jpg'),
+			('ptr31','prd08','images/grid10.jpg'),
+			('ptr32','prd08','images/show3.jpg'),
+
+			('ptr33','prd09','images/shoe2.jpg'),
+			('ptr34','prd09','images/grid5.jpg'),
+			('ptr35','prd09','images/grid11.jpg'),
+			('ptr36','prd09','images/show.jpg'),
+
+			('ptr37','prd10','images/shoe2.jpg'),
+			('ptr38','prd10','images/grid6.jpg'),
+			('ptr39','prd10','images/grid12.jpg'),
+			('ptr40','prd10','images/show1.jpg'),
+
+			('ptr41','prd11','images/shoe2.jpg'),
+			('ptr42','prd11','images/grid7.jpg'),
+			('ptr43','prd11','images/grid13.jpg'),
+			('ptr44','prd11','images/show2.jpg'),
+
+			('ptr45','prd12','images/shoe3.jpg'),
+			('ptr46','prd12','images/grid8.jpg'),
+			('ptr47','prd12','images/grid12.jpg'),
+			('ptr48','prd12','images/show3.jpg')
 GO
 
 CREATE TABLE tbl_order(
