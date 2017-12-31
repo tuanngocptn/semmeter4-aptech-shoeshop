@@ -17,7 +17,7 @@ import others.Methods;
  */
 public class ProductControl {
     
-    private ProductModel productModel;
+    private final ProductModel productModel;
 
     public ProductControl() {
         productModel = new ProductModel();
@@ -26,5 +26,13 @@ public class ProductControl {
     public String getAllProduct(Product product){
         List<Product> lstProducts = (productModel.getAllProduct(product));
         return Methods.toJson(lstProducts);
+    }
+    
+    public boolean add(Product product){
+        return productModel.add(product);
+    }
+    
+    public boolean update(Product product){
+        return productModel.update(product);
     }
 }

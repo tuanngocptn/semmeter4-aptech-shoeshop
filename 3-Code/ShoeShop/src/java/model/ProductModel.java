@@ -47,9 +47,20 @@ public class ProductModel {
             }
             rs.close();
         } catch (SQLException ex) {
-            Logger.getLogger(ProductControl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductModel.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
         return lstProducts;
     }
+    
+    public boolean add(Product product){
+        String query = Methods.strAddProduct(product);
+        return DatabaseConnect.excute(query);
+    }
+    
+    public boolean update(Product product){
+        String query = Methods.strUpdateProduct(product);
+        return DatabaseConnect.excute(query);
+    }
+    
 }

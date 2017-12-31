@@ -5,8 +5,8 @@
  */
 package services;
 
-import control.OrderControl;
-import entities.Order;
+import control.AccountControl;
+import entities.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -21,20 +21,19 @@ import others.Methods;
  *
  * @author Panda
  */
-@WebServlet(name = "order", urlPatterns = {"/order"})
-public class OrderServlet extends HttpServlet {
+@WebServlet(name = "account", urlPatterns = {"/account"})
+public class AccountServlet extends HttpServlet {
 
     private PrintWriter printWriter;
-    private OrderControl orderControl;
+    private AccountControl accountControl;
 
     @Override
     public void init() throws ServletException {
-        orderControl = new OrderControl();
+        accountControl = new AccountControl();
     }
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
     }
 
     @Override
@@ -43,20 +42,15 @@ public class OrderServlet extends HttpServlet {
         Methods.setHeaderAjax(request, response);
         printWriter = response.getWriter();
         String param = request.getParameter(Constants.PRAM_STRING);
-        Order order = Methods.fromJson(param, Order.class);
-        String result = Methods.toJson(orderControl.getOrder(order));
+        Account account = Methods.fromJson(param, Account.class);
+        String result = Methods.toJson(accountControl.get(account));
         printWriter.write(result);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Methods.setHeaderAjax(request, response);
-        printWriter = response.getWriter();
-        String param = Methods.getAjaxRequest(request);
-        Order order = Methods.fromJson(param, Order.class);
-        boolean boo = orderControl.insertOrder(order);
-        printWriter.print(boo);
+        processRequest(request, response);
     }
 
     @Override
@@ -69,8 +63,8 @@ public class OrderServlet extends HttpServlet {
         Methods.setHeaderAjax(request, response);
         printWriter = response.getWriter();
         String param = Methods.getAjaxRequest(request);
-        Order order = Methods.fromJson(param, Order.class);
-        boolean boo = orderControl.update(order);
+        Account account = Methods.fromJson(param, Account.class);
+        boolean boo = accountControl.update(account);
         printWriter.print(boo);
     }
 

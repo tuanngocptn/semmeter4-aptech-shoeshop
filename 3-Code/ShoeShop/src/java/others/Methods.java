@@ -65,6 +65,7 @@ public class Methods {
         return gson.fromJson(json, classT);
     }
 
+    //Account function
     public static String strInsertAccount(Account account) {
         String query = "INSERT INTO " + Constants.ACCOUNT_TABLE + "("
                 + Constants.ACCOUNT_COLUMN_CODE + ", " + Constants.ACCOUNT_COLUMN_ROLE_CODE + ", "
@@ -85,7 +86,7 @@ public class Methods {
         return query;
     }
 
-    public static String strSelectAccount(Account account) {
+    public static String strGetAccount(Account account) {
         String query = "SELECT "
                 + Constants.ACCOUNT_COLUMN_CODE + ", " + Constants.ACCOUNT_COLUMN_ROLE_CODE + ", "
                 + Constants.ACCOUNT_COLUMN_USER + ", " + Constants.ACCOUNT_COLUMN_PASS + ", "
@@ -139,6 +140,7 @@ public class Methods {
         return query;
     }
 
+    //Product function
     public static String strSelectProduct(Product product) {
         String query;
         if (product.getTypeSearch() == null) {
@@ -241,6 +243,7 @@ public class Methods {
         return query;
     }
 
+    //Rate function
     public static String strSelectRate(Rate rate) {
         String query = "SELECT ROUND(AVG(" + Constants.RATE_COLUMN_RATE + "),0)  AS " + Constants.RATE_COLUMN_RATE
                 + " FROM " + Constants.RATE_TABLE + " WHERE 0 = 0 ";
@@ -263,6 +266,7 @@ public class Methods {
         return query;
     }
 
+    //Order function
     public static String strInsertOrderDetail(OrderDetail orderDetail) {
         String query = "INSERT INTO " + Constants.ORDER_DETAIL_TABLE + "(" + Constants.ORDER_DETAIL_COLUMN_ORDER_CODE + ","
                 + Constants.ORDER_DETAIL_COLUMN_PRODUCT_CODE + "," + Constants.ORDER_DETAIL_COLUMN_QUANTITY + ") VALUES ('"
@@ -291,6 +295,66 @@ public class Methods {
         return query;
     }
 
+    public static String strGetOrder(Order order) {
+        String query = "SELECT * FROM " + Constants.ORDER_TABLE + " WHERE "
+                + Constants.ORDER_COLUMN_STATUS + " <> 'deactive' AND ( 0<>0 ";
+        if (order.getCode() != null) {
+            query += " OR " + Constants.ORDER_COLUMN_CODE + " LIKE '%" + order.getCode() + "%' ";
+        }
+        if (order.getAccountCode() != null) {
+            query += " OR " + Constants.ORDER_COLUMN_ACCOUNT_CODE + " LIKE '%" + order.getAccountCode() + "%' ";
+        }
+        if (order.getDate() != null) {
+            query += " OR " + Constants.ORDER_COLUMN_DATE + " LIKE '%" + order.getDate() + "%' ";
+        }
+        if (order.getName() != null) {
+            query += " OR " + Constants.ORDER_COLUMN_NAME + " LIKE '%" + order.getName() + "%' ";
+        }
+        if (order.getEmail() != null) {
+            query += " OR " + Constants.ORDER_COLUMN_EMAIL + " LIKE '%" + order.getEmail() + "%' ";
+        }
+        if (order.getPhone() != null) {
+            query += " OR " + Constants.ORDER_COLUMN_PHONE + " LIKE '%" + order.getPhone() + "%' ";
+        }
+        if (order.getShipAddress() != null) {
+            query += " OR " + Constants.ORDER_COLUMN_SHIP_ADDRESS + " LIKE '%" + order.getShipAddress() + "%' ";
+        }
+        if (order.getShipDate() != null) {
+            query += " OR " + Constants.ORDER_COLUMN_SHIP_DATE + " LIKE '%" + order.getShipDate() + "%' ";
+        }
+        if (order.getStatus() != null) {
+            query += " OR " + Constants.ORDER_COLUMN_STATUS + " LIKE '%" + order.getStatus() + "%' ";
+        }
+        query += ");";
+        return query;
+    }
+
+    public static String strGetOrderDetail(OrderDetail orderDetail) {
+        String query = "SELECT * FROM " + Constants.ORDER_DETAIL_TABLE + " WHERE "
+                + Constants.ORDER_DETAIL_COLUMN_ORDER_CODE + " LIKE '%" + orderDetail.getOrderCode() + "%'";
+        return query;
+    }
+
+    public static String strUpdateOrder(Order order) {
+        String query = "UPDATE " + Constants.ORDER_TABLE + " SET "
+                + Constants.ORDER_COLUMN_ACCOUNT_CODE + " = '" + order.getAccountCode() + "', "
+                + Constants.ORDER_COLUMN_DATE + " ='" + order.getDate() + "', "
+                + Constants.ORDER_COLUMN_NAME + " ='" + order.getName() + "', "
+                + Constants.ORDER_COLUMN_EMAIL + " ='" + order.getEmail() + "', "
+                + Constants.ORDER_COLUMN_PHONE + " ='" + order.getPhone() + "', "
+                + Constants.ORDER_COLUMN_SHIP_ADDRESS + " ='" + order.getShipAddress() + "', "
+                + Constants.ORDER_COLUMN_SHIP_DATE + " ='" + order.getShipDate() + "', "
+                + Constants.ORDER_COLUMN_STATUS + " = '" + order.getStatus()
+                + "' WHERE "
+                + Constants.ORDER_COLUMN_CODE + " = '" + order.getCode() + "';";
+        query += " DELETE FROM " + Constants.ORDER_TABLE + " WHERE " + Constants.ORDER_COLUMN_CODE + " = '%" + order.getCode() + "%'";
+        for (OrderDetail orderDetail : order.getLstOrderDetail()) {
+            query += strInsertOrderDetail(orderDetail);
+        }
+        return query;
+    }
+
+    //Category function
     public static String strSelectCategory(Category category) {
         String query = "SELECT "
                 + Constants.CATEGORY_COLUMN_ORD + ", " + Constants.CATEGORY_COLUMN_CODE + ", "
@@ -333,6 +397,7 @@ public class Methods {
         return query;
     }
 
+    //Brand function
     public static String strBrandMaxOrd() {
         String query = "SELECT MAX(" + Constants.BRAND_COLUMN_ORD + ") AS "
                 + Constants.BRAND_COLUMN_ORD + "  FROM " + Constants.BRAND_TABLE + ";";

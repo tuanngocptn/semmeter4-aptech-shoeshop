@@ -7,6 +7,7 @@
 package control;
 
 import entities.Order;
+import java.util.List;
 import model.OrderModel;
 
 /**
@@ -23,5 +24,13 @@ public class OrderControl {
     
     public boolean insertOrder(Order order){
         return orderModerl.insertOrder(order);
+    }
+    
+    public List<Order> getOrder(Order order){
+        return orderModerl.getOrder(order);
+    }
+    
+    public boolean update(Order order){
+        return orderModerl.updateOrder(order);
     }
 }

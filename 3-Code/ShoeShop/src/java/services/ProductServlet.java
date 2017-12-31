@@ -49,7 +49,12 @@ public class ProductServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+         Methods.setHeaderAjax(request, response);
+        printWriter = response.getWriter();
+        String param = Methods.getAjaxRequest(request);
+        Product product = Methods.fromJson(param, Product.class);
+        boolean boo = productControl.add(product);
+        printWriter.print(boo);
     }
 
     @Override
@@ -59,7 +64,11 @@ public class ProductServlet extends HttpServlet {
 
     @Override
     protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request, response);
+        printWriter = response.getWriter();
+        String param = Methods.getAjaxRequest(request);
+        Product produc = Methods.fromJson(param, Product.class);
+        boolean boo = productControl.update(produc);
+        printWriter.print(boo);
     }
     
     @Override
