@@ -87,12 +87,7 @@ public class Methods {
     }
 
     public static String strGetAccount(Account account) {
-        String query = "SELECT "
-                + Constants.ACCOUNT_COLUMN_CODE + ", " + Constants.ACCOUNT_COLUMN_ROLE_CODE + ", "
-                + Constants.ACCOUNT_COLUMN_USER + ", " + Constants.ACCOUNT_COLUMN_PASS + ", "
-                + Constants.ACCOUNT_COLUMN_ADDRESS + ", " + Constants.ACCOUNT_COLUMN_PHONE + ", "
-                + Constants.ACCOUNT_COLUMN_EMAIL + ", " + Constants.ACCOUNT_COLUMN_STATUS
-                + " FROM " + Constants.ACCOUNT_TABLE;
+        String query = "SELECT * FROM " + Constants.ACCOUNT_TABLE;
         if (account.getStatus() != null) {
             query += " WHERE (0 <> 0 ";
         } else {
@@ -126,7 +121,7 @@ public class Methods {
     }
 
     public static String strUpdateAccount(Account account) {
-        String query = "UPDATE " + Constants.CATEGORY_TABLE + " SET "
+        String query = "UPDATE " + Constants.ACCOUNT_TABLE + " SET "
                 + Constants.ACCOUNT_COLUMN_ROLE_CODE + " = '" + account.getRoleCode() + "', "
                 + Constants.ACCOUNT_COLUMN_USER + " ='" + account.getUser() + "', "
                 + Constants.ACCOUNT_COLUMN_PASS + " = '" + account.getPass() + "', "

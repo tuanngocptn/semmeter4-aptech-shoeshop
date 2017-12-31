@@ -208,9 +208,61 @@ desired effect
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Page Header
-                    <small>Optional description</small>
+                    Manager Members
                 </h1>
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">List Orders</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="" data-original-title="Remove">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="col-lg-6">
+                            <div class="input-group">
+                                <input type="text" class="form-control text-search" placeholder="Search for..." aria-label="Search for...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-secondary" onclick="doSearch()" type="button">Go!</button>
+                                </span>
+                            </div>
+                        </div>
+                        <table class="table table-bordered" style="margin-top: 10px">
+                            <thead>
+                                <tr>
+                                    <th style="width: 10px">code</th>
+                                    <th class="text-center">role</th>
+                                    <th class="text-center">user</th>
+                                    <th class="text-center">name</th>
+                                    <th class="text-center">status</th>
+                                    <th class="text-center">functions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="tbl-member">
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+
+                            </tfoot>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        ...
+                    </div>
+                    <!-- /.box-footer-->
+                </div>
             </section>
 
             <!-- Main content -->
@@ -322,6 +374,92 @@ desired effect
         <div class="control-sidebar-bg"></div>
     </div>
     <!-- ./wrapper -->
+
+
+    <!-- .modal view -->
+    <div class="modal fade" id="modal-view-member" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">Member</h4>
+                </div>
+                <div class="modal-body">
+                    <h5>
+                        <b>Member Detail:</b>
+                    </h5>
+                    <table class="member-table">
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+    </div>
+    <!-- /.modal-dialog -->
+
+    <!-- .modal view -->
+    <div class="modal fade" id="modal-update-member" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">Update Member</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="text" placeholder="Code" disabled="disabled" class="form-control update-code" />
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" placeholder="Role" disabled="disabled" class="form-control update-role" />
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" placeholder="User" disabled="disabled" class="form-control update-user" />
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" placeholder="Pass" class="form-control update-pass" />
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" placeholder="Name" class="form-control update-name" />
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" placeholder="Address" class="form-control update-address" />
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" placeholder="Phone" class="form-control update-phone" />
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" placeholder="Email" class="form-control update-email" />
+                    </div>
+
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" class="update-isActive"> Active </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="doUpdate()">Save Change</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+    </div>
+    <!-- /.modal-dialog -->
+
 
     <!-- REQUIRED JS SCRIPTS -->
 
