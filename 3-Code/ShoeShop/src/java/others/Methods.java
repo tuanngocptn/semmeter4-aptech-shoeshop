@@ -14,6 +14,7 @@ import entities.Order;
 import entities.OrderDetail;
 import entities.Product;
 import entities.Rate;
+import entities.Report;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -226,7 +227,7 @@ public class Methods {
                 + Constants.PRODUCT_COLUMN_STATUS + " = '" + product.getStatus()
                 + "' WHERE "
                 + Constants.PRODUCT_COLUMN_CODE + " = '" + product.getCode() + "';";
-        query += "DELETE FROM " + Constants.PRODUCT_TABLE + " WHERE " + Constants.PRODUCT_COLUMN_CODE + " = '" + product.getCode() + "';";
+        query += "DELETE FROM " + Constants.IMAGE_TABLE + " WHERE " + Constants.IMAGE_PRODUCT_CODE + " = '" + product.getCode() + "';";
         for (ImageProduct image : product.getLstImages()) {
             query += "INSERT INTO " + Constants.IMAGE_TABLE + " ("
                     + Constants.IMAGE_CODE + ", " + Constants.IMAGE_PRODUCT_CODE + ", "
@@ -432,6 +433,17 @@ public class Methods {
                 + Constants.BRAND_COLUMN_LOGO + " = '" + brand.getLogo()
                 + "' WHERE "
                 + Constants.BRAND_COLUMN_CODE + " = '" + brand.getCode() + "';";
+        return query;
+    }
+    
+    public static String strSearchReport(Report report){
+        String query = "SELECT * FROM VIEW_REPORT WHERE 0 = 0 ";
+        if(report.getStartDate() != null){
+            query += " AND _date >= " + report.getStartDate();
+        }
+        if(report.getEndDate()!= null){
+            query += " AND _date <= " + report.getEndDate();
+        }
         return query;
     }
 

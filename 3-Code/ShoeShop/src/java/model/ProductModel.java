@@ -54,7 +54,22 @@ public class ProductModel {
     }
     
     public boolean add(Product product){
-        String query = Methods.strAddProduct(product);
+        String query = Methods.strProductMaxOrd();
+        int max = 0;
+        try {
+            ResultSet rs = DatabaseConnect.getResultSet(query);
+            if (rs == null) {
+                return false;
+            }
+            if (rs.next()) {
+                max = rs.getInt(Constants.PRODUCT_COLUMN_ORD);
+                rs.close();
+            }
+        } catch (SQLException ex) {
+            return false;
+        }
+        product.setCode(Constants.FORMAT_PRODUCT + ++max);
+        query = Methods.strAddProduct(product);
         return DatabaseConnect.excute(query);
     }
     

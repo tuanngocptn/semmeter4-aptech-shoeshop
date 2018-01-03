@@ -224,4 +224,12 @@ GO
 INSERT INTO tbl_rate (_product_code, _account_code)
 	VALUES	('prd01','ctm01'),
 			('prd02','ctm01')
+
 GO
+
+CREATE VIEW VIEW_REPORT AS
+SELECT tbl_product._price, tbl_order_detail._quantity, tbl_order._code, tbl_order._date FROM tbl_order_detail
+LEFT JOIN tbl_order ON tbl_order_detail._order_code = tbl_order._code
+LEFT JOIN tbl_product ON tbl_order_detail._product_code = tbl_product._code;
+
+
