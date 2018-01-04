@@ -14,7 +14,7 @@ GO
 CREATE TABLE tbl_role (
 	_ord INT IDENTITY,
 	_code VARCHAR(20) PRIMARY KEY,
-	_name VARCHAR(50) NOT NULL,
+	_name VARCHAR(50) NOT NULL UNIQUE,
 	_status VARCHAR(20) NOT NULL DEFAULT 'active',
 )
 GO
@@ -30,7 +30,7 @@ CREATE TABLE tbl_account(
 	_role_code VARCHAR(20) FOREIGN KEY REFERENCES tbl_role(_code),
 	_user VARCHAR(50) NOT NULL UNIQUE,
 	_pass VARCHAR(50) NOT NULL,
-	_name VARCHAR(50) NOT NULL DEFAULT 'edit me',
+	_name VARCHAR(50) NOT NULL DEFAULT 'full name',
 	_address VARCHAR(255),
 	_phone VARCHAR(15) NOT NULL UNIQUE,
 	_email VARCHAR(100) NOT NULL DEFAULT 'edit-me@email.com',
@@ -47,7 +47,7 @@ GO
 CREATE TABLE tbl_brand(
 	_ord INT IDENTITY,
 	_code VARCHAR(20) PRIMARY KEY,
-	_name VARCHAR(50) NOT NULL,
+	_name VARCHAR(50) NOT NULL UNIQUE,
 	_status VARCHAR(20) NOT NULL DEFAULT 'active',
 	_logo VARCHAR(255) NOT NULL DEFAULT 'https://dummyimage.com/600x400/000/fff',
 )
@@ -64,7 +64,7 @@ GO
 CREATE TABLE tbl_category(
 	_ord INT IDENTITY,
 	_code VARCHAR(20) PRIMARY KEY,
-	_name VARCHAR(50) NOT NULL,
+	_name VARCHAR(50) NOT NULL UNIQUE,
 	_status VARCHAR(20) NOT NULL DEFAULT 'active',
 	_logo VARCHAR(255) NOT NULL DEFAULT 'https://dummyimage.com/600x400/000/fff',
 )

@@ -7,7 +7,7 @@ $(document).ready(function () {
     } else {
         console.log(localStorage.productType);
     };
-    callAjax("GET", 'product', 'params={"isHot": true}', loadCarousel);
+    callAjax("GET", 'product', 'params={"isHot": true, "status":"active"}', loadCarousel);
 });
 
 function loadCarousel(data){
@@ -21,7 +21,7 @@ function loadCarousel(data){
             i++;
         }
     });
-    callAjax("GET", 'product', 'params={"top":9, "name":""}', loadData);
+    callAjax("GET", 'product', 'params={"top":9 ,"status":"active"}', loadData);
 }
 
 function loadData(data){

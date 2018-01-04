@@ -3,12 +3,11 @@ var categories = [];
 var updateCode = '';
 var cateUpdate = {};
 $(document).ready(function () { 
-    var param = 'params={"status":"","logo":"","name":""}';
+    var param = 'params={"logo":"","name":""}';
     callAjax("GET", 'category', param, loadData);
 });
 
 function doSearch(){
-    console.log('abc');
     cateUpdate = {};
     cateUpdate.name = cateUpdate.logo = cateUpdate.status = $('.text-search').val();
     var param = 'params=' + JSON.stringify(cateUpdate);

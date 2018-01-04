@@ -116,7 +116,7 @@ public class Methods {
             query += " OR " + Constants.ACCOUNT_COLUMN_EMAIL + " LIKE '%" + account.getEmail() + "%' ";
         }
         if (account.getStatus() != null) {
-            query += " ) AND " + Constants.ACCOUNT_COLUMN_STATUS + " LIKE '%" + account.getStatus() + "%' ";
+            query += " ) AND " + Constants.ACCOUNT_COLUMN_STATUS + " = '" + account.getStatus() + "' ";
         }
         return query;
     }
@@ -319,7 +319,7 @@ public class Methods {
             query += " OR " + Constants.ORDER_COLUMN_SHIP_DATE + " LIKE '%" + order.getShipDate() + "%' ";
         }
         if (order.getStatus() != null) {
-            query += " OR " + Constants.ORDER_COLUMN_STATUS + " LIKE '%" + order.getStatus() + "%' ";
+            query += " OR " + Constants.ORDER_COLUMN_STATUS + " = '" + order.getStatus() + "' ";
         }
         query += ");";
         return query;
@@ -357,7 +357,7 @@ public class Methods {
                 + Constants.CATEGORY_COLUMN_NAME + ", " + Constants.CATEGORY_COLUMN_STATUS + ", "
                 + Constants.CATEGORY_COLUMN_LOGO + " FROM " + Constants.CATEGORY_TABLE + " WHERE 0 <> 0 ";
         if (category.getStatus() != null) {
-            query += " OR " + Constants.CATEGORY_COLUMN_STATUS + " LIKE '%" + category.getStatus() + "%' ";
+            query += " OR " + Constants.CATEGORY_COLUMN_STATUS + " = '" + category.getStatus() + "' ";
         }
         if (category.getCode() != null) {
             query += " OR " + Constants.CATEGORY_COLUMN_CODE + " LIKE '%" + category.getCode() + "%' ";
@@ -406,7 +406,7 @@ public class Methods {
                 + Constants.BRAND_COLUMN_NAME + ", " + Constants.BRAND_COLUMN_STATUS + ", "
                 + Constants.BRAND_COLUMN_LOGO + " FROM " + Constants.BRAND_TABLE + " WHERE 0 <> 0 ";
         if (brand.getStatus() != null) {
-            query += " OR " + Constants.BRAND_COLUMN_STATUS + " LIKE '%" + brand.getStatus() + "%' ";
+            query += " OR " + Constants.BRAND_COLUMN_STATUS + " = '" + brand.getStatus() + "' ";
         }
         if (brand.getCode() != null) {
             query += " OR " + Constants.BRAND_COLUMN_CODE + " LIKE '%" + brand.getCode() + "%' ";
