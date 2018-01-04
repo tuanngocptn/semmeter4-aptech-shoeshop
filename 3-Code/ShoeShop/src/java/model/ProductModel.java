@@ -5,7 +5,6 @@
  */
 package model;
 
-import control.ProductControl;
 import entities.Product;
 import java.sql.ResultSet;
 import java.sql.SQLException;

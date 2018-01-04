@@ -43,4 +43,11 @@ public class ReportServlet extends HttpServlet {
         printWriter.write(Methods.toJson(report));
         
     }
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        Methods.setHeaderAjax(request, response);
+        printWriter = response.getWriter();
+        printWriter.print(reportControl.get5ProductHot());
+    }
 }

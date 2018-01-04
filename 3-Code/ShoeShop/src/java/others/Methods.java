@@ -446,5 +446,9 @@ public class Methods {
         }
         return query;
     }
-
+    
+    
+    public static String get5ProductHot(){
+        return "SELECT * FROM VIEW_REPORT_5_PRODUCT";
+    }
 }

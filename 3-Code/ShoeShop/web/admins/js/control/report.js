@@ -40,6 +40,22 @@ function loadMonth(value){
     $('.monthly-revernue').text('$' + value.revenue);
     $('.monthly-product').text(value.totalProduct)
     $('.monthly-order').text(value.totalOrder)
+    callAjax("POST", 'report', "", load5Product);
+}
+
+function load5Product(products){
+    $('.load5product').empty();
+    products.forEach(element => {
+        $('.load5product').append(getProduct(element));
+    });
+}
+
+function getProduct(element){
+    return  '<tr>' +
+                '<td>'+ element.code +'</td>' +
+                '<td>'+ element.name +'</td>' +
+                '<td>'+ element.price +'</td>' +
+            '</tr>';
 }
 
 function search(){

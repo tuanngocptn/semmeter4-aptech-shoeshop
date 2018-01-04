@@ -6,6 +6,7 @@
 
 package model;
 
+import entities.Product;
 import entities.Report;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -64,5 +65,36 @@ public class ReportModel {
         report.setTotalOrder(totalOrder);
         report.setTotalProduct(totalProduct);
         return report;
+    }
+    
+    public List<Product> get5ProductHot() {
+        ImageProductModel imageProductModel = new ImageProductModel();
+        String query = Methods.get5ProductHot();
+        List<Product> lstProducts = new ArrayList<>();
+        try (ResultSet rs = DatabaseConnect.getResultSet(query)){
+            if (rs == null) {
+                return null;
+            }
+            while (rs.next()) {
+                Product product = new Product();
+                product.setOrd(rs.getInt(Constants.PRODUCT_COLUMN_ORD));
+                product.setCode(rs.getString(Constants.PRODUCT_COLUMN_CODE));
+                product.setName(rs.getString(Constants.PRODUCT_COLUMN_NAME));
+                product.setBrandCode(rs.getString(Constants.PRODUCT_COLUMN_BRAND_CODE));
+                product.setCategoryCode(rs.getString(Constants.PRODUCT_COLUMN_CATEGORY_CODE));
+                product.setDescription(rs.getString(Constants.PRODUCT_COLUMN_DESCRIPTION));
+                product.setPrice(rs.getDouble(Constants.PRODUCT_COLUMN_PRICE));
+                product.setIsHot(rs.getBoolean(Constants.PRODUCT_COLUMN_IS_HOT));
+                product.setQuantity(rs.getInt(Constants.PRODUCT_COLUMN_QUANTITY));
+                product.setStatus(rs.getString(Constants.PRODUCT_COLUMN_STATUS));
+                product.setLstImages(imageProductModel.getImageProduct(product.getCode()));
+                lstProducts.add(product);
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductModel.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        return lstProducts;
     }
 }

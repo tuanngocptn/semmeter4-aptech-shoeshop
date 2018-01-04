@@ -228,8 +228,44 @@ INSERT INTO tbl_rate (_product_code, _account_code)
 GO
 
 CREATE VIEW VIEW_REPORT AS
-SELECT tbl_product._price, tbl_order_detail._quantity, tbl_order._code, tbl_order._date FROM tbl_order_detail
-LEFT JOIN tbl_order ON tbl_order_detail._order_code = tbl_order._code
-LEFT JOIN tbl_product ON tbl_order_detail._product_code = tbl_product._code;
+SELECT 
+	tbl_product._price, tbl_order_detail._quantity, tbl_order._code, tbl_order._date 
+FROM 
+	tbl_order_detail
+LEFT JOIN 
+	tbl_order 
+ON 
+	tbl_order_detail._order_code = tbl_order._code
+LEFT JOIN 
+	tbl_product 
+ON 
+	tbl_order_detail._product_code = tbl_product._code
+GO
 
-
+CREATE VIEW VIEW_REPORT_5_PRODUCT AS
+SELECT 
+	* 
+FROM 
+	tbl_product
+WHERE 
+	_code IN (
+		SELECT _code FROM(
+			SELECT 
+				TOP 5 SUM(tbl_order_detail._quantity) AS _quantity, tbl_product._code 
+			FROM 
+				tbl_order_detail
+			LEFT JOIN 
+				tbl_order 
+			ON 
+				tbl_order_detail._order_code = tbl_order._code
+			LEFT JOIN 
+				tbl_product 
+			ON 
+				tbl_order_detail._product_code = tbl_product._code
+			GROUP BY 
+				tbl_product._code 
+			ORDER BY 
+				_quantity 
+			DESC) 
+		AS tblCode)
+GO
