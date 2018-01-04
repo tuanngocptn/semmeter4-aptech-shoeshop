@@ -57,6 +57,7 @@ public class AccountModel {
                 accountResult.setRoleCode(rs.getString(Constants.ACCOUNT_COLUMN_ROLE_CODE));
                 accountResult.setUser(rs.getString(Constants.ACCOUNT_COLUMN_USER));
                 accountResult.setPass(rs.getString(Constants.ACCOUNT_COLUMN_PASS));
+                accountResult.setPassLv2(rs.getString(Constants.ACCOUNT_COLUMN_PASS_LEVEL_2));
                 accountResult.setName(rs.getString(Constants.ACCOUNT_COLUMN_NAME));
                 accountResult.setAddress(rs.getString(Constants.ACCOUNT_COLUMN_ADDRESS));
                 accountResult.setPhone(rs.getString(Constants.ACCOUNT_COLUMN_PHONE));

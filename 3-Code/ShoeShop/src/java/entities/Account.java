@@ -16,6 +16,7 @@ public class Account {
     private String roleCode;
     private String user;
     private String pass;
+    private String passLv2;
     private String name;
     private String address;
     private String phone;
@@ -23,6 +24,14 @@ public class Account {
     private String status;
 
     public Account() {
+    }
+
+    public String getPassLv2() {
+        return passLv2;
+    }
+
+    public void setPassLv2(String passLv2) {
+        this.passLv2 = passLv2;
     }
 
     public int getOrd() {

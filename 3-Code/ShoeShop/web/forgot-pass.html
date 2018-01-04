@@ -119,7 +119,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <li>
                     <a href="index.html">HOME</a>
                 </li>
-                <li class="active">LOGIN</li>
+                <li class="active">RECOVER PASSWORD</li>
             </ol>
         </div>
     </div>
@@ -129,21 +129,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="container">
             <div class="login-grids">
                 <div class="col-md-6 log">
-                    <h3>Login</h3>
+                    <h3>Recover Password</h3>
                     <div class="strip"></div>
                     <p>Welcome, please enter the following to continue.</p>
                     <p>If you have previously Login with us,
-                        <a href="#">Click Here</a>
+                        <a href="login.html">Click Here</a>
                     </p>
                     <form action="login" method="POST" id="form-login">
                         <h5>User Name:</h5>
-                        <input type="text" value="" name="user">
-                        <h5>Password:</h5>
-                        <input type="password" value="" name="pass">
+                        <input type="text" value="" name="user" class="user">
+                        <h5>Password Level 2:</h5>
+                        <input type="password" value="" name="passLevel2" class="passLevel2">
+                        <h5>Password new:</h5>
+                        <input type="password" value="" name="pass" class="pass">
                         <br>
-                        <input type="submit" value="Login" id="btn-login">
+                        <input type="submit" value="Recover" id="btn-login">
                     </form>
-                    <a href="forgot-pass.html">Forgot Password ?</a>
                 </div>
                 <div class="col-md-6 login-right">
                     <h3>New Registration</h3>
@@ -239,7 +240,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
     </div>
     <script src="js/other/constants-and-methods.js"></script>
-    <script src="js/controller/login.js"></script>
+    <script src="js/controller/forgot-pass.js"></script>
 </body>
 
 </html>

@@ -50,6 +50,7 @@ public class Constants {
     public static final String ACCOUNT_COLUMN_PHONE = "_phone";
     public static final String ACCOUNT_COLUMN_EMAIL = "_email";
     public static final String ACCOUNT_COLUMN_STATUS = "_status";
+    public static final String ACCOUNT_COLUMN_PASS_LEVEL_2 = "_passLv2";
     
     public static final String PRODUCT_TABLE = "tbl_product";
     public static final String PRODUCT_COLUMN_ORD = "_ord";

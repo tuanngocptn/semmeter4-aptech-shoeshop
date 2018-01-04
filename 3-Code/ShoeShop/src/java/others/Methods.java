@@ -72,11 +72,13 @@ public class Methods {
                 + Constants.ACCOUNT_COLUMN_CODE + ", " + Constants.ACCOUNT_COLUMN_ROLE_CODE + ", "
                 + Constants.ACCOUNT_COLUMN_USER + ", " + Constants.ACCOUNT_COLUMN_PASS + ", "
                 + Constants.ACCOUNT_COLUMN_ADDRESS + ", " + Constants.ACCOUNT_COLUMN_PHONE + ", "
+                + Constants.ACCOUNT_COLUMN_PASS_LEVEL_2 + ", "
                 + Constants.ACCOUNT_COLUMN_EMAIL + ", " + Constants.ACCOUNT_COLUMN_STATUS + ")"
                 + "VALUES ('"
                 + account.getCode() + "','" + account.getRoleCode() + "','"
                 + account.getUser() + "','" + account.getPass() + "','"
                 + account.getAddress() + "','" + account.getPhone() + "', '"
+                + account.getPassLv2() + "','"
                 + account.getEmail() + "', '" + account.getStatus() + "')";
         return query;
     }
@@ -126,6 +128,7 @@ public class Methods {
                 + Constants.ACCOUNT_COLUMN_ROLE_CODE + " = '" + account.getRoleCode() + "', "
                 + Constants.ACCOUNT_COLUMN_USER + " ='" + account.getUser() + "', "
                 + Constants.ACCOUNT_COLUMN_PASS + " = '" + account.getPass() + "', "
+                + Constants.ACCOUNT_COLUMN_PASS_LEVEL_2 + " = '" + account.getPassLv2() + "', "
                 + Constants.ACCOUNT_COLUMN_NAME + " = '" + account.getName() + "', "
                 + Constants.ACCOUNT_COLUMN_ADDRESS + " = '" + account.getAddress() + "', "
                 + Constants.ACCOUNT_COLUMN_PHONE + " = '" + account.getPhone() + "', "

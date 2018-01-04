@@ -36,6 +36,11 @@ $(document).ready(function () {
             repass: {
                 equalTo: "#pass"
             },
+            passLv2 :{
+                required: true,
+                minlength: 5,
+                maxlength: 50
+            },
             phone: {
                 required: true,
                 number: true,

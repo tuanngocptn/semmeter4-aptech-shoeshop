@@ -30,6 +30,7 @@ CREATE TABLE tbl_account(
 	_role_code VARCHAR(20) FOREIGN KEY REFERENCES tbl_role(_code),
 	_user VARCHAR(50) NOT NULL UNIQUE,
 	_pass VARCHAR(50) NOT NULL,
+	_passLv2 VARCHAR(50) NOT NULL,
 	_name VARCHAR(50) NOT NULL DEFAULT 'full name',
 	_address VARCHAR(255),
 	_phone VARCHAR(15) NOT NULL UNIQUE,
@@ -39,9 +40,9 @@ CREATE TABLE tbl_account(
 GO
 
 
-INSERT INTO tbl_account(_code, _role_code, _user, _pass, _address, _phone, _email, _status) 
-	VALUES	('adm01','adm','admin','admin','123 adm01 No 1 in the Mars','0989786765', 'adm01@email.com', 'active'),
-			('ctm01','ctm','cus01','cus01','123 ctm01 No 1 in the Mars','0987675654', 'cus01@email.com', 'active')
+INSERT INTO tbl_account(_code, _role_code, _user, _pass, _passLv2, _address, _phone, _email, _status) 
+	VALUES	('adm01','adm','admin','admin','admin2','123 adm01 No 1 in the Mars','0989786765', 'adm01@email.com', 'active'),
+			('ctm01','ctm','cus01','cus01','cus012','123 ctm01 No 1 in the Mars','0987675654', 'cus01@email.com', 'active')
 GO
 
 CREATE TABLE tbl_brand(
