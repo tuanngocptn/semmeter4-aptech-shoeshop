@@ -29,7 +29,15 @@ function doAddNew(){
     cateUpdate.name = $('.add-new-name').val();
     cateUpdate.logo = $('.add-new-img').val();
     cateUpdate.status = 'active';
-    callAjax("POST", 'category', JSON.stringify(cateUpdate), locationReload);
+    callAjax("POST", 'category', JSON.stringify(cateUpdate), addNewResult);
+}
+
+function addNewResult(value){
+    if(value){
+        location.reload();
+    }else{
+        alert("This Name is existed !")
+    }
 }
 
 function updateCate(button){
@@ -56,6 +64,15 @@ function loadData(data){
     });
 }
 
+function deleteCate(button){
+    updateCode = button.dataset.id;
+    categories.forEach(element => {
+        if(element.code == updateCode){
+            element.status = 'delete'
+            callAjax("PUT", 'category', JSON.stringify(element), locationReload);
+        }
+    });
+}
 function getRow(row,index){
     var color = row.status == 'active' ? 'green' : 'red';
     return "<tr>"+
@@ -65,7 +82,9 @@ function getRow(row,index){
                 "<td class='text-center'>" +
                     "<button class='btn btn-primary btn-update-cate' onclick='updateCate(this)' data-id='"+ row.code +"' data-toggle='modal' data-target='#modal-edit-cate'>"+
                         "<i class='fa fa-pencil' aria-hidden='true'></i>"+
-                    "</button>"+
+                    "</button>-"+
+                    "<button class='btn btn-danger btn-update-cate' onclick='deleteCate(this)' data-id='"+ row.code +"'>"+
+                        "<i class='fa fa-trash' aria-hidden='true'></i>" +
                 "</td>"+
             "</tr>";
 }

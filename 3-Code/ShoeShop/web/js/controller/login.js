@@ -18,6 +18,7 @@ function loginMethod(user) {
             location.reload();
         }
     } else {
+        $('.error-login').show();
         localStorage.removeItem("user");
     }
 }

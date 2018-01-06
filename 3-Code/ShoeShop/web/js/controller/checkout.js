@@ -1,6 +1,9 @@
 var roles = [{ role: 'ctm' }, { role: '' }];
 
 $(document).ready(function () { 
+    if(simpleCart.items().length < 1){
+        location.replace(constants.urlServer + "index.html")
+    }
     callAjax("GET", 'product', 'params={ "name":""}', loadBag);
     if(typeof user == 'undefined'){
         $("#cb-get-info").prop('disabled', true);
@@ -69,7 +72,6 @@ $(document).ready(function () {
 });
 
 function isSuccessOrder(boo){
-    console.log(boo);
     if(boo){
         if(!alert('order success!')){
             simpleCart.empty();

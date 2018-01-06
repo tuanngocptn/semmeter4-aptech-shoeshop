@@ -33,6 +33,7 @@ public class Constants {
     public static final String ROLE_CUSTOMER = "ctm";
     public static final String STATUS_ACTIVE = "active";
     public static final String STATUS_DELETE= "delete";
+    public static final String STATUS_WAIT= "wait";
     public static final String FORMAT_ORDER_CODE = "ord";
     public static final String FORMAT_CATEGORY_CODE = "cate";
     public static final String FORMAT_BRAND_CODE = "bra";

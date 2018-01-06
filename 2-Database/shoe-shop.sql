@@ -82,7 +82,7 @@ GO
 CREATE TABLE tbl_product(
 	_ord INT IDENTITY,
 	_code VARCHAR(20) PRIMARY KEY,
-	_name VARCHAR(50) NOT NULL,
+	_name VARCHAR(50) NOT NULL UNIQUE,
 	_brand_code VARCHAR(20) FOREIGN KEY REFERENCES tbl_brand(_code),
 	_category_code VARCHAR(20) FOREIGN KEY REFERENCES tbl_category(_code),
 	_description VARCHAR(500) NOT NULL DEFAULT 'description',

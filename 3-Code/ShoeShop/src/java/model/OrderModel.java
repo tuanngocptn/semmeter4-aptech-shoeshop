@@ -38,6 +38,7 @@ public class OrderModel {
             return false;
         }
         order.setCode(Constants.FORMAT_ORDER_CODE + ++max);
+        order.setStatus(Constants.STATUS_WAIT);
         query = Methods.strInsertOrder(order);
         if (!order.getLstOrderDetail().isEmpty()) {
             for (OrderDetail orderDetail : order.getLstOrderDetail()) {

@@ -32,7 +32,7 @@ function loadCate(value){
     categories = value;
     $('.add-category-code, .edit-category-code').empty();
     value.forEach(element => {
-        $('.add-category-code, .edit-category-code').append('<option value="'+ element.code +'">'+ element.code +'</option>')
+        $('.add-category-code, .edit-category-code').append('<option value="'+ element.code +'">'+ element.name +'</option>')
     });
     var param = 'params={"status":"","logo":"","name":""}';
     callAjax("GET", 'brand', param, loadBrand);
@@ -42,7 +42,7 @@ function loadBrand(value){
     brands = loadBrand
     $('.add-brand-code, .edit-brand-code').empty();
     value.forEach(element => {
-        $('.add-brand-code, .edit-brand-code').append('<option value="'+ element.code +'">'+ element.code +'</option>')
+        $('.add-brand-code, .edit-brand-code').append('<option value="'+ element.code +'">'+ element.name +'</option>')
     });
 }
 
@@ -197,7 +197,15 @@ function doAddProduct(){
     image.image = $('.img-add-3').val();
     lstImages.push(image);
     product.lstImages = lstImages;
-    callAjax("POST", 'product', JSON.stringify(product), locationReload);
+    callAjax("POST", 'product', JSON.stringify(product), addNewResult);
+}
+
+function addNewResult(value){
+    if(value){
+        location.reload();
+    }else{
+        alert("This Name is existed !")
+    }
 }
 
 function getRow(row,index){
@@ -217,7 +225,7 @@ function getRow(row,index){
                     "</button>-"+
                     (row.status == "active" ?
                     "<button class='btn btn-danger btn-update-product' onclick='deleteProduct(this)' data-id='"+ row.code +"'>"+
-                        "<i class='fa fa-trash' aria-hidden='true'></i>" :
+                        "<i class='fa fa-lock' aria-hidden='true'></i>" :
                     "<button class='btn btn-success btn-update-product' onclick='activeProduct(this)' data-id='"+ row.code +"'>"+
                         "<i class='fa fa-check' aria-hidden='true'></i>" )+
                     "</button>"+

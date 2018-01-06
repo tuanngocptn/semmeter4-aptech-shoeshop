@@ -29,7 +29,15 @@ function doAddNew(){
     brandUpdate.name = $('.add-new-name').val();
     brandUpdate.logo = $('.add-new-img').val();
     brandUpdate.status = 'active';
-    callAjax("POST", 'brand', JSON.stringify(brandUpdate), locationReload);
+    callAjax("POST", 'brand', JSON.stringify(brandUpdate), addNewResult);
+}
+
+function addNewResult(value){
+    if(value){
+        location.reload();
+    }else{
+        alert("This Name is existed !")
+    }
 }
 
 function updateBrand(button){
@@ -57,6 +65,16 @@ function loadData(data){
     });
 }
 
+function deleteBrand(button){
+    updateCode = button.dataset.id;
+    brands.forEach(element => {
+        if(element.code == updateCode){
+            element.status = 'delete'
+            callAjax("PUT", 'brand', JSON.stringify(element), locationReload);
+        }
+    });
+}
+
 function getRow(row,index){
     var color = row.status == 'active' ? 'green' : 'red';
     return "<tr>"+
@@ -66,7 +84,9 @@ function getRow(row,index){
                 "<td class='text-center'>" +
                     "<button class='btn btn-primary btn-update-brand' onclick='updateBrand(this)' data-id='"+ row.code +"' data-toggle='modal' data-target='#modal-edit-brand'>"+
                         "<i class='fa fa-pencil' aria-hidden='true'></i>"+
-                    "</button>"+
+                    "</button>-" +
+                    "<button class='btn btn-danger btn-update-brand' onclick='deleteBrand(this)' data-id='"+ row.code +"'>"+
+                        "<i class='fa fa-trash' aria-hidden='true'></i>" +
                 "</td>"+
             "</tr>";
 }

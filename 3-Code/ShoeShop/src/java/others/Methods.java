@@ -78,7 +78,7 @@ public class Methods {
                 + account.getCode() + "','" + account.getRoleCode() + "','"
                 + account.getUser() + "','" + account.getPass() + "','"
                 + account.getAddress() + "','" + account.getPhone() + "', '"
-                + account.getPassLv2() + "','" + account.getName()+ "', '"
+                + account.getPassLv2() + "','" + account.getName() + "', '"
                 + account.getEmail() + "', '" + account.getStatus() + "')";
         return query;
     }
@@ -152,10 +152,10 @@ public class Methods {
         }
         if (product.getStatus() != null) {
             query += " WHERE (0 = 0 ";
-        } else if (product.getTypeSearch().equals("OR")){
+        } else if (product.getTypeSearch().equals("OR")) {
             query += " WHERE 0 <> 0 ";
-        }else{
-             query += " WHERE 0 = 0 ";
+        } else {
+            query += " WHERE 0 = 0 ";
         }
         if (product.getCode() != null) {
             query += product.getTypeSearch() + " " + Constants.PRODUCT_COLUMN_CODE + " LIKE '%" + product.getCode() + "%' ";
@@ -357,10 +357,14 @@ public class Methods {
 
     //Category function
     public static String strSelectCategory(Category category) {
+        if(category.getCode() == null && category.getName() == null){
+            category.setCode("");
+        }
         String query = "SELECT "
                 + Constants.CATEGORY_COLUMN_ORD + ", " + Constants.CATEGORY_COLUMN_CODE + ", "
                 + Constants.CATEGORY_COLUMN_NAME + ", " + Constants.CATEGORY_COLUMN_STATUS + ", "
-                + Constants.CATEGORY_COLUMN_LOGO + " FROM " + Constants.CATEGORY_TABLE + " WHERE 0 <> 0 ";
+                + Constants.CATEGORY_COLUMN_LOGO + " FROM " + Constants.CATEGORY_TABLE + " WHERE "
+                + Constants.CATEGORY_COLUMN_STATUS +" <> '"+ Constants.STATUS_DELETE +"' AND ( 0 <> 0";
         if (category.getStatus() != null) {
             query += " OR " + Constants.CATEGORY_COLUMN_STATUS + " = '" + category.getStatus() + "' ";
         }
@@ -368,8 +372,9 @@ public class Methods {
             query += " OR " + Constants.CATEGORY_COLUMN_CODE + " LIKE '%" + category.getCode() + "%' ";
         }
         if (category.getName() != null) {
-            query += " OR " + Constants.CATEGORY_COLUMN_NAME + " LIKE '%" + category.getName() + "%';";
+            query += " OR " + Constants.CATEGORY_COLUMN_NAME + " LIKE '%" + category.getName() + "%'";
         }
+        query += ");";
         return query;
     }
 
@@ -406,10 +411,14 @@ public class Methods {
     }
 
     public static String strSelectBrand(Brand brand) {
+        if(brand.getCode() == null && brand.getName() == null){
+            brand.setCode("");
+        }
         String query = "SELECT "
                 + Constants.BRAND_COLUMN_ORD + ", " + Constants.BRAND_COLUMN_CODE + ", "
                 + Constants.BRAND_COLUMN_NAME + ", " + Constants.BRAND_COLUMN_STATUS + ", "
-                + Constants.BRAND_COLUMN_LOGO + " FROM " + Constants.BRAND_TABLE + " WHERE 0 <> 0 ";
+                + Constants.BRAND_COLUMN_LOGO + " FROM " + Constants.BRAND_TABLE + " WHERE "
+                + Constants.BRAND_COLUMN_STATUS +" <> '"+ Constants.STATUS_DELETE +"' AND ( 0 <> 0";
         if (brand.getStatus() != null) {
             query += " OR " + Constants.BRAND_COLUMN_STATUS + " = '" + brand.getStatus() + "' ";
         }
@@ -417,8 +426,9 @@ public class Methods {
             query += " OR " + Constants.BRAND_COLUMN_CODE + " LIKE '%" + brand.getCode() + "%' ";
         }
         if (brand.getName() != null) {
-            query += " OR " + Constants.BRAND_COLUMN_NAME + " LIKE '%" + brand.getName() + "%';";
+            query += " OR " + Constants.BRAND_COLUMN_NAME + " LIKE '%" + brand.getName() + "%'";
         }
+        query += ");";
         return query;
     }
 
@@ -440,20 +450,19 @@ public class Methods {
                 + Constants.BRAND_COLUMN_CODE + " = '" + brand.getCode() + "';";
         return query;
     }
-    
-    public static String strSearchReport(Report report){
+
+    public static String strSearchReport(Report report) {
         String query = "SELECT * FROM VIEW_REPORT WHERE 0 = 0 ";
-        if(report.getStartDate() != null){
+        if (report.getStartDate() != null) {
             query += " AND _date >= " + report.getStartDate();
         }
-        if(report.getEndDate()!= null){
+        if (report.getEndDate() != null) {
             query += " AND _date <= " + report.getEndDate();
         }
         return query;
     }
-    
-    
-    public static String get5ProductHot(){
+
+    public static String get5ProductHot() {
         return "SELECT * FROM VIEW_REPORT_5_PRODUCT";
     }
 }
