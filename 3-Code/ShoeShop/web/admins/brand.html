@@ -83,50 +83,11 @@ desired effect
                         <!-- User Account Menu -->
                         <li class="dropdown user user-menu">
                             <!-- Menu Toggle Button -->
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <a href="#" onclick="localStorage.clear();location.reload();">
                                 <!-- The user image in the navbar-->
-                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                <i class="fa fa-sign-out" aria-hidden="true"></i>
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                                <span class="hidden-xs">Admin</span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <!-- The user image in the menu -->
-                                <li class="user-header">
-                                    <p>
-                                        Admin - Web Developer
-                                        <small>Member since Nov. 2012</small>
-                                    </p>
-                                </li>
-                                <!-- Menu Body -->
-                                <li class="user-body">
-                                    <div class="row">
-                                        <div class="col-xs-4 text-center">
-                                            <a href="#">Followers</a>
-                                        </div>
-                                        <div class="col-xs-4 text-center">
-                                            <a href="#">Sales</a>
-                                        </div>
-                                        <div class="col-xs-4 text-center">
-                                            <a href="#">Friends</a>
-                                        </div>
-                                    </div>
-                                    <!-- /.row -->
-                                </li>
-                                <!-- Menu Footer-->
-                                <li class="user-footer">
-                                    <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
-                                    </div>
-                                    <div class="pull-right">
-                                        <a href="#" class="btn btn-default btn-flat" onclick="localStorage.clear();location.reload();">Sign out</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                        <!-- Control Sidebar Toggle Button -->
-                        <li>
-                            <a href="#" data-toggle="control-sidebar">
-                                <i class="fa fa-gears"></i>
+                                <span class="hidden-xs" >Sign out</span>
                             </a>
                         </li>
                     </ul>
@@ -138,69 +99,60 @@ desired effect
 
             <!-- sidebar: style can be found in sidebar.less -->
             <section class="sidebar">
-                <!-- search form (Optional) -->
-                <form action="#" method="get" class="sidebar-form">
-                    <div class="input-group">
-                        <input type="text" name="" class="form-control" placeholder="Search...">
-                        <span class="input-group-btn">
-                            <button type="submit" name="search" class="btn btn-flat">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </span>
-                    </div>
-                </form>
-                <!-- /.search form -->
 
-                <!-- Sidebar Menu -->
-                <ul class="sidebar-menu" data-widget="tree">
-                    <li class="header">MANAGEMENT</li>
-                    <!-- Optionally, you can add icons to the links -->
-                    <li>
-                        <a href="home.html">
-                            <i class="fa fa-home"></i>
-                            <span>Home</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="member.html">
-                            <i class="fa fa-user-o"></i>
-                            <span>Manager Members</span>
-                        </a>
-                    </li>
-                    <li class="active">
-                        <a href="#">
-                            <i class="fa fa-list-ul"></i>
-                            <span>Manager Brands</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="category.html">
-                            <i class="fa fa-list"></i>
-                            <span>Manager Categories</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="product.html">
-                            <i class="fa fa-product-hunt"></i>
-                            <span>Manager Products</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="order.html">
-                            <i class="fa fa-truck"></i>
-                            <span>Manager Orders</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="report.html">
-                            <i class="fa fa-area-chart"></i>
-                            <span>Manager Reports</span>
-                        </a>
-                    </li>
-                </ul>
-                <!-- /.sidebar-menu -->
-            </section>
-            <!-- /.sidebar -->
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+
+                    <!-- Sidebar Menu -->
+                    <ul class="sidebar-menu" data-widget="tree">
+                        <li class="header">MANAGEMENT</li>
+                        <!-- Optionally, you can add icons to the links -->
+                        <li>
+                            <a href="home.html">
+                                <i class="fa fa-home"></i>
+                                <span>Home</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="member.html">
+                                <i class="fa fa-user-o"></i>
+                                <span>Manager Members</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="#">
+                                <i class="fa fa-list-ul"></i>
+                                <span>Manager Brands</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="category.html">
+                                <i class="fa fa-list"></i>
+                                <span>Manager Categories</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="product.html">
+                                <i class="fa fa-product-hunt"></i>
+                                <span>Manager Products</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="order.html">
+                                <i class="fa fa-truck"></i>
+                                <span>Manager Orders</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="report.html">
+                                <i class="fa fa-area-chart"></i>
+                                <span>Manager Reports</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.sidebar-menu -->
+                </section>
+                <!-- /.sidebar -->
         </aside>
 
         <!-- Content Wrapper. Contains page content -->

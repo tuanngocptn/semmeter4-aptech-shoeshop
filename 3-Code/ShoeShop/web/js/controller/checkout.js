@@ -73,7 +73,7 @@ function isSuccessOrder(boo){
     if(boo){
         if(!alert('order success!')){
             simpleCart.empty();
-            window.location.replace(constants.urlServer + 'index.html');
+            window.location.replace(constants.urlServer + 'orders.html');
         }
     }else{
         alert("order false!");

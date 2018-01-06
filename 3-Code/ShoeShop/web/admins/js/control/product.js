@@ -10,6 +10,14 @@ $(document).ready(function () {
     callAjax("GET", 'product', param, loadData);
 });
 
+function doSearch(){
+    var strSearch = $('.text-search').val();
+    // var param = 'params={"typeSearch":"AND","name":"'+ strSearch +'","categoryCode":"'+ strSearch +'","brandCode":"'+ strSearch +'","description":"'+ strSearch +'"}'
+    var param = 'params={"typeSearch":"OR","name":"'+ strSearch +'"}'
+    console.log(param);
+    callAjax("GET", 'product', param, loadData);
+}
+
 function loadData(data){
     products = data;
     $(".tbl-product").empty();
@@ -76,7 +84,7 @@ function loadImage(lstImages){
     } 
     if (images[1].split("/")[0] =="images")
     {
-        images[1] = '../' + images[1];
+        images[1] = '../' + images[1]; 
     } 
     if (images[2].split("/")[0] =="images")
     {

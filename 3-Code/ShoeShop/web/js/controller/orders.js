@@ -1,10 +1,15 @@
-var roles = [{ role: 'adm' }];
+var roles = [{ role: 'ctm' }];
 
 var orders = [];
 var updateCode = '';
 var orderUpdate = {};
 var products = [];
-$(document).ready(function () { 
+
+$(document).ready(function () {
+    $('#form-login').submit(false);
+
+    console.log(user);
+
     var param = 'params={"code":""}';
     callAjax("GET", 'order', param, loadData);
 });
@@ -13,7 +18,9 @@ function loadData(data){
     orders = data;
     $(".tbl-order").empty();
     data.forEach(function(element,index,arr){
-        $(".tbl-order").append(getRow(element,index + 1));
+        if(element.accountCode == user.code){
+            $(".tbl-order").append(getRow(element,index + 1));
+        }
     });
     callAjax("GET", 'product', 'params={ "name":""}', getProduct);
 }
@@ -21,48 +28,6 @@ function loadData(data){
 function getProduct(data){
     products = data;
 }
-
-function deleteOrder(element){
-    var code = element.dataset.id;
-    orders.forEach(order => {
-        if(order.code == code){
-            var result = order;
-            result.status = "deactive";
-            callAjax("PUT", 'order', JSON.stringify(result), locationReload);
-        }
-    });
-}
-
-function successOrder(element){
-    var code = element.dataset.id;
-    orders.forEach(order => {
-        if(order.code == code){
-            var result = order;
-            result.status = "confirmed";
-            callAjax("PUT", 'order', JSON.stringify(result), locationReload);
-        }
-    });
-}
-
-function updateOrder(element){
-    var code = element.dataset.id;
-    orders.forEach(order => {
-        if(order.code == code){
-            orderUpdate = order;
-            $('.update-phone').val(order.phone);
-            $('.update-address').val(order.shipAddress);
-            $('.update-date').val(miliSecondToDate(order.shipDate));
-        }
-    });
-}
-
-function doUpdate(){
-    orderUpdate.phone = $('.update-phone').val();
-    orderUpdate.shipAddress = $('.update-address').val();
-    orderUpdate.shipDate = dateToMiliSecond($('.update-date').val());
-    callAjax("PUT", 'order', JSON.stringify(orderUpdate), locationReload);
-}
-
 
 function viewOrder(element){
     var code = element.dataset.id;
@@ -88,6 +53,22 @@ function loadProduct(datas){
         });
     });
     $('.sum-order').text('$' + sum);
+}
+
+function deleteOrder(element){
+    var code = element.dataset.id;
+    orders.forEach(order => {
+        if(order.code == code){
+            var result = order;
+            result.status = "deactive";
+            callAjax("PUT", 'order', JSON.stringify(result), locationReload);
+        }
+    });
+}
+
+function locationReload(boo){
+    console.log(boo);
+    window.location.reload();
 }
 
 function getTd(element){
@@ -118,18 +99,12 @@ function getRow(row,index){
                 "<td class='text-center'><span class='badge bg-"+ color +"'>"+ status +"</span></td>"+
                 "<td class='text-center'>" +
                     "<button class='btn btn-info btn-view-order' onclick='viewOrder(this)' data-id='"+ row.code +"' data-toggle='modal' data-target='#modal-view-order'>"+
-                        "<i class='fa fa-eye' aria-hidden='true'></i>"+
+                        "View</i>"+
                     "</button>"+
-                    (row.status == 'wait' ? (
-                    "-<button class='btn btn-primary btn-update-order' onclick='updateOrder(this)' data-id='"+ row.code +"' data-toggle='modal' data-target='#modal-edit-order'>"+
-                        "<i class='fa fa-pencil' aria-hidden='true'></i>"+
-                    "</button>-"+
-                    "<button class='btn btn-success btn-delete-order' onclick='successOrder(this)' data-id='"+ row.code +"'>"+
-                        "<i class='fa fa-check' aria-hidden='true'></i>"+
-                    "</button>-"+
-                    "<button class='btn btn-danger btn-delete-order' onclick='deleteOrder(this)' data-id='"+ row.code +"'>"+
-                        "<i class='fa fa-trash' aria-hidden='true'></i>"+
-                    "</button>" ) : "" )+
+                    (row.status == 'wait' ? 
+                    "-<button class='btn btn-danger btn-delete-order' onclick='deleteOrder(this)' data-id='"+ row.code +"'>"+
+                        "Delete</i>" : "" )+
+                    "</button>"+
                 "</td>"+
             "</tr>";
 }

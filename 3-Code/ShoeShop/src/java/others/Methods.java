@@ -72,13 +72,13 @@ public class Methods {
                 + Constants.ACCOUNT_COLUMN_CODE + ", " + Constants.ACCOUNT_COLUMN_ROLE_CODE + ", "
                 + Constants.ACCOUNT_COLUMN_USER + ", " + Constants.ACCOUNT_COLUMN_PASS + ", "
                 + Constants.ACCOUNT_COLUMN_ADDRESS + ", " + Constants.ACCOUNT_COLUMN_PHONE + ", "
-                + Constants.ACCOUNT_COLUMN_PASS_LEVEL_2 + ", "
+                + Constants.ACCOUNT_COLUMN_PASS_LEVEL_2 + ", " + Constants.ACCOUNT_COLUMN_NAME + ", "
                 + Constants.ACCOUNT_COLUMN_EMAIL + ", " + Constants.ACCOUNT_COLUMN_STATUS + ")"
                 + "VALUES ('"
                 + account.getCode() + "','" + account.getRoleCode() + "','"
                 + account.getUser() + "','" + account.getPass() + "','"
                 + account.getAddress() + "','" + account.getPhone() + "', '"
-                + account.getPassLv2() + "','"
+                + account.getPassLv2() + "','" + account.getName()+ "', '"
                 + account.getEmail() + "', '" + account.getStatus() + "')";
         return query;
     }
@@ -152,8 +152,10 @@ public class Methods {
         }
         if (product.getStatus() != null) {
             query += " WHERE (0 = 0 ";
-        } else {
+        } else if (product.getTypeSearch().equals("OR")){
             query += " WHERE 0 <> 0 ";
+        }else{
+             query += " WHERE 0 = 0 ";
         }
         if (product.getCode() != null) {
             query += product.getTypeSearch() + " " + Constants.PRODUCT_COLUMN_CODE + " LIKE '%" + product.getCode() + "%' ";
