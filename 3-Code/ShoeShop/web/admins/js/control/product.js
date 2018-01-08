@@ -24,7 +24,7 @@ function loadData(data){
     data.forEach(function(element,index,arr){
         $(".tbl-product").append(getRow(element,index + 1));
     });
-    var param = 'params={"status":"","logo":"","name":""}';
+    var param = 'params={"status":"active"}';
     callAjax("GET", 'category', param, loadCate);
 }
 
@@ -34,7 +34,7 @@ function loadCate(value){
     value.forEach(element => {
         $('.add-category-code, .edit-category-code').append('<option value="'+ element.code +'">'+ element.name +'</option>')
     });
-    var param = 'params={"status":"","logo":"","name":""}';
+    var param = 'params={"status":"active"}';
     callAjax("GET", 'brand', param, loadBrand);
 }
 
@@ -128,7 +128,7 @@ function doUpdate(){
             product.lstImages[1].image = $('.img-edit-1').val();
             product.lstImages[2].image = $('.img-edit-2').val();
             product.lstImages[3].image = $('.img-edit-3').val();
-            callAjax("PUT", 'product', JSON.stringify(product), locationReload);
+            callAjax("PUT", 'product', JSON.stringify(product), newResult);
         }
     });
 }
@@ -197,14 +197,14 @@ function doAddProduct(){
     image.image = $('.img-add-3').val();
     lstImages.push(image);
     product.lstImages = lstImages;
-    callAjax("POST", 'product', JSON.stringify(product), addNewResult);
+    callAjax("POST", 'product', JSON.stringify(product), newResult);
 }
 
-function addNewResult(value){
+function newResult(value){
     if(value){
         location.reload();
     }else{
-        alert("This Name is existed !")
+        alert("Error! name existed, quantity or price < 1.")
     }
 }
 

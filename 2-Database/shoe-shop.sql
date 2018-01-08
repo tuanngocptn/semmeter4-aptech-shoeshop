@@ -270,3 +270,20 @@ WHERE
 			DESC) 
 		AS tblCode)
 GO
+
+CREATE TRIGGER CHECK_PRODUCT_PRICE
+ON tbl_product
+AFTER INSERT, UPDATE
+AS 
+	BEGIN
+		DECLARE @quantity INT
+		DECLARE @price FLOAT
+		SET @quantity=(SELECT _quantity FROM INSERTED)
+		SET @price=(SELECT _price FROM INSERTED)
+		IF(@quantity < 1 OR @price < 1)
+		BEGIN
+			PRINT 'Error'
+			ROLLBACK TRAN
+		END
+	END
+GO

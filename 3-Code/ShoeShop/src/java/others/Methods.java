@@ -364,10 +364,11 @@ public class Methods {
                 + Constants.CATEGORY_COLUMN_ORD + ", " + Constants.CATEGORY_COLUMN_CODE + ", "
                 + Constants.CATEGORY_COLUMN_NAME + ", " + Constants.CATEGORY_COLUMN_STATUS + ", "
                 + Constants.CATEGORY_COLUMN_LOGO + " FROM " + Constants.CATEGORY_TABLE + " WHERE "
-                + Constants.CATEGORY_COLUMN_STATUS +" <> '"+ Constants.STATUS_DELETE +"' AND ( 0 <> 0";
+                + Constants.CATEGORY_COLUMN_STATUS +" <> '"+ Constants.STATUS_DELETE +"'";
         if (category.getStatus() != null) {
-            query += " OR " + Constants.CATEGORY_COLUMN_STATUS + " = '" + category.getStatus() + "' ";
+            query += " AND " + Constants.CATEGORY_COLUMN_STATUS + " = '" + category.getStatus() + "' ";
         }
+        query += " AND ( 0 <> 0 ";
         if (category.getCode() != null) {
             query += " OR " + Constants.CATEGORY_COLUMN_CODE + " LIKE '%" + category.getCode() + "%' ";
         }
@@ -418,10 +419,11 @@ public class Methods {
                 + Constants.BRAND_COLUMN_ORD + ", " + Constants.BRAND_COLUMN_CODE + ", "
                 + Constants.BRAND_COLUMN_NAME + ", " + Constants.BRAND_COLUMN_STATUS + ", "
                 + Constants.BRAND_COLUMN_LOGO + " FROM " + Constants.BRAND_TABLE + " WHERE "
-                + Constants.BRAND_COLUMN_STATUS +" <> '"+ Constants.STATUS_DELETE +"' AND ( 0 <> 0";
+                + Constants.BRAND_COLUMN_STATUS +" <> '"+ Constants.STATUS_DELETE +"'";
         if (brand.getStatus() != null) {
-            query += " OR " + Constants.BRAND_COLUMN_STATUS + " = '" + brand.getStatus() + "' ";
+            query += " AND " + Constants.BRAND_COLUMN_STATUS + " = '" + brand.getStatus() + "' ";
         }
+        query +=  " AND ( 0 <> 0 ";
         if (brand.getCode() != null) {
             query += " OR " + Constants.BRAND_COLUMN_CODE + " LIKE '%" + brand.getCode() + "%' ";
         }
