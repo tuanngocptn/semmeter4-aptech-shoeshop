@@ -28,7 +28,7 @@ function radioChange(){
     if(typeof brand == 'undefined'){
         brand = '';
     }
-    var param = 'params={"status":"active","typeSearch":"AND"'+ cate + brand +'}'
+    var param = 'params={"status":"active","typeSearch":"AND"}'+ cate + brand +'}'
     callAjax("GET", 'product', param, loadData);
 }
 
