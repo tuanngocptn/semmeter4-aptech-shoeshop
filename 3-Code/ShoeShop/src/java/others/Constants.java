@@ -10,7 +10,7 @@ package others;
  * @author Panda
  */
 public class Constants {
-    public static final String DB_URL = "jdbc:sqlserver://PANDAPO\\SQLEXPRESS:1433;DatabaseName=SHOE_SHOP";
+    public static final String DB_URL = "jdbc:sqlserver://localhost:1433;DatabaseName=SHOE_SHOP";
     public static final String CONNECTION_STRING = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     public static final String DB_USER = "sa";
     public static final String DB_PASS = "123";
