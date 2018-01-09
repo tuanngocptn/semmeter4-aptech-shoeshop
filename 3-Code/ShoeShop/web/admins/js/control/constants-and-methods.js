@@ -27,7 +27,7 @@ function callAjax(method,url,params,callback) {
 }
 
 var constants = {
-    urlServer : 'http://localhost:8080/ShoeShop/',
+    urlServer : window.location.origin + '/ShoeShop/',
 }
 
 function getFormData($form){
